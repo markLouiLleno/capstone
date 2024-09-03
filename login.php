@@ -62,7 +62,7 @@
                 <div class="team-icon d-none d-xl-flex justify-content-center me-3">
                     <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
                 </div>
-                <a href="login.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Log-in</a>
+                <a href="signin.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Log-in</a>
             </div>
         </nav>
     </div>
@@ -87,7 +87,7 @@
                 <div class="col-sm-6 form">
                     <!-- Login Form -->
                     <div class="login form-peice switched">
-                        <form class="login-form" action="login.php" method="post">
+                        <form class="login-form" action="signin.php" method="post">
                             <div class="form-group">
                                 <label for="loginemail">Email Address</label>
                                 <input type="email" name="loginemail" id="loginemail" required>

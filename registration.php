@@ -66,7 +66,7 @@ session_start();
             <div class="team-icon d-none d-xl-flex justify-content-center me-3">
                 <a class="btn btn-square btn-light rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
             </div>
-            <a href="Login.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Log-in</a>
+            <a href="signin.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Log-in</a>
         </div>
     </nav>
 </div>

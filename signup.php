@@ -1,8 +1,24 @@
+<?php
+require_once './vendor/autoload.php';
+
+session_start();
+
+$client = new Google_Client();
+$client->setClientId('192547642967-55c0n1rkuphejq5et6sso4fggcjudhga.apps.googleusercontent.com');
+$client->setClientSecret('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');
+$client->setRedirectUri('http://localhost/jpams_resort_management_system/google-callback.php');
+$client->addScope("email");
+$client->addScope("profile");
+
+$auth_url = $client->createAuthUrl();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Sign Up</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -76,8 +92,9 @@
         }
 
         .form-label {
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 0.3rem;
+            font-weight: 500;
         }
 
         .form-input {
@@ -98,7 +115,7 @@
 
         .submit-btn {
             padding: 16px;
-            font-size: 16px;
+            font-size: 14px;
             color: #fff;
             background-color: #333;
             border: none;
@@ -114,7 +131,7 @@
         }
         
         .google-btn {
-            font-size: 16px;
+            font-size: 14px;
             border: none;
             border-radius: 0.5rem;
             cursor: pointer;
@@ -161,7 +178,7 @@
         }
 
         .redirect-text {
-            font-size: 16px;
+            font-size: 14px;
             color: gray;
             text-align: center;
         }
@@ -172,62 +189,89 @@
 
         /* Error message styling */
         .error-message {
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             width: 100%;
             height: 40px;
-            background: #f44336;
+            background: #fdeded;
             border-radius: 0.5rem;
-        }
-        .error-message-text {
-            color: #FFF;
+            color: #5f2120;
             font-size: 14px;
             font-weight: 500;
+        }
+
+        .success-message {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            background: #edf7ed;
+            border-radius: 0.5rem;
+            color: #1e4620;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .error-text {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
     <div class="form-container">
-        <form action="#" class="form">
+        <form action="#" class="form" id="signup-form" method="POST">
             <h1 class="intro-title">Sign Up</h1>
 
-            <div class="error-message">
-                <p class="error-message-text">Please fill in all the fields.</p>
-            </div>
+            <div class="error-message"></div>
+            <div class="success-message"></div>
 
             <div class="name-field">
                 <div class="field">
-                    <label for="first-name" class="form-label">First Name</label>
+                    <label for="first-name" class="form-label">
+                        First Name
+                    </label>
                     <input 
                         id="first-name"
                         name="first-name" 
                         placeholder="Juan"
                         class="form-input"
                     >
+                    <span id="first-name-error" class="error-text"></span>
                 </div>
                 <div class="field">
-                    <label for="last-name" class="form-label">Last Name</label>
+                    <label for="last-name" class="form-label">
+                        Last Name
+                    </label>
                     <input 
                         id="last-name"
                         name="last-name" 
                         placeholder="Dela Cruz"
                         class="form-input"
                     >
+                    <span id="last-name-error" class="error-text"></span>
                 </div>
             </div>
             <div class="field">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label">
+                    Email
+                </label>
                 <input 
                     id="email"
                     name="email" 
                     placeholder="juandelacruz@example.com"
                     class="form-input"
                 >
+                <span id="email-error" class="error-text"></span>
             </div>
             <div class="field">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">
+                    Password
+                </label>
                 <input 
                     id="password"
                     name="password" 
@@ -235,6 +279,7 @@
                     type="password"
                     class="form-input"
                 >
+                <span id="password-error" class="error-text"></span>
             </div>
             <button class="submit-btn" type="submit">
                 Sign up with credentials
@@ -245,128 +290,65 @@
                 <div class="or-line"></div>
             </div>
 
-            <button class="google-btn" type="button">
+            <a class="google-btn" href="<?php echo $auth_url; ?>">
                 <img width="25" height="25" src="https://th.bing.com/th/id/R.0fa3fe04edf6c0202970f2088edea9e7?rik=joOK76LOMJlBPw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fgoogle-logo-png-open-2000.png&ehk=0PJJlqaIxYmJ9eOIp9mYVPA4KwkGo5Zob552JPltDMw%3d&risl=&pid=ImgRaw&r=0" alt="Google logo">
                 Sign up with google
-            </button>
+    </a>
             <div class="redirect-text">
                 Already have an account?
                 <a href="signin.php" style="font-weight: 500; color: #333; text-decoration: none; ">Sign in</a>
             </div>
         </form>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Sign Up AJAX -->
+     <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": "#000"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#333"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    },
-                    "image": {
-                        "src": "img/github.svg",
-                        "width": 100,
-                        "height": 100
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 5,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#000",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": false,
-                        "mode": "repulse"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 400,
-                        "line_linked": {
-                            "opacity": 1
+        $(document).ready(() => {
+
+            $('#signup-form').submit((e) => {
+                e.preventDefault();
+                
+                // Clear previous error
+                $('.error-text').text('').hide();
+
+                // Get the value of the form fields
+                var formData = {
+                    'first-name': $('#first-name').val(),
+                    'last-name': $('#last-name').val(),
+                    'email': $('#email').val(),
+                    'password': $('#password').val(),
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: './php/signup.php',
+                    data: formData,
+                    dataType: 'json',
+                    success: (response) => {
+                        if (response.success) {
+                            $('.success-message').css({ display: 'flex' });
+                            $('.success-message').text('Your account has been created').show();
+                            $('.error-text').text('').hide();
+                            $('#signup-form')[0].reset();
+
+                            // After 5 seconds, redirect user to login page.
+                            setTimeout(() => {
+                                window.location.href = 'signin.php';
+                            }, 5000);
+                            return;
                         }
+
+                        $.each(response.errors, (field, message) => {
+                            $(`#${field}-error`).text(message).show();
+                        });
                     },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 1
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
+                    error: (xhr, status, error) => {
+                        $('.error-message').css({ display: 'flex' });
+                        $('.error-message').text(xhr.responseText).show();
                     }
-                }
-            },
-            "retina_detect": true
+                });
+            });
         });
     </script>
 </body>
