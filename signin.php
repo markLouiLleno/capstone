@@ -15,6 +15,7 @@ $auth_url = $client->createAuthUrl();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,7 @@ $auth_url = $client->createAuthUrl();
         @import url("http://fonts.cdnfonts.com/css/sf-pro-display");
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         @import url("https://use.typekit.net/ngj5fjz.css");
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -113,10 +114,11 @@ $auth_url = $client->createAuthUrl();
             height: 50px;
             font-weight: 500;
         }
+
         .submit-btn:hover {
             background-color: #3e3e3e;
         }
-        
+
         .google-btn {
             font-size: 14px;
             border: none;
@@ -126,7 +128,7 @@ $auth_url = $client->createAuthUrl();
             transition: background-color 0.2s ease;
             font-weight: 400;
             background: #f9f9f9;
-            border: 1px solid rgba(0, 0,0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -170,6 +172,7 @@ $auth_url = $client->createAuthUrl();
             color: gray;
             text-align: center;
         }
+
         .redirect-text a:hover {
             text-decoration: underline !important;
             color: #3e3e3e;
@@ -206,6 +209,7 @@ $auth_url = $client->createAuthUrl();
         }
     </style>
 </head>
+
 <body>
     <div class="form-container">
         <form action="#" class="form" method="POST" id="signin-form">
@@ -215,28 +219,25 @@ $auth_url = $client->createAuthUrl();
 
             <div class="field">
                 <label for="email" class="form-label">Email</label>
-                <input 
+                <input
                     id="email"
-                    name="email" 
+                    name="email"
                     placeholder="juandelacruz@example.com"
-                    class="form-input"
-                >
+                    class="form-input">
             </div>
             <div class="field">
                 <label for="password" class="form-label">Password</label>
-                <input 
+                <input
                     id="password"
-                    name="password" 
+                    name="password"
                     placeholder="******"
                     type="password"
-                    class="form-input"
-                >
+                    class="form-input">
             </div>
-            <button 
-                class="forgot-btn" 
-                type="button" 
-                onclick="window.location.href='forgot_password.php'"
-            >
+            <button
+                class="forgot-btn"
+                type="button"
+                onclick="window.location.href='forgot_password.php'">
                 Forgot password?
             </button>
             <button class="submit-btn" type="submit">
@@ -280,7 +281,7 @@ $auth_url = $client->createAuthUrl();
                                     window.location.href = 'views/admin_dashboard.php';
                                     break;
                                 case 'customer':
-                                    window.location.href = 'views/customer_dashboard.php';
+                                    window.location.href = 'user_dashboard.php';
                                     break;
                             }
                         } else {
@@ -295,4 +296,5 @@ $auth_url = $client->createAuthUrl();
         });
     </script>
 </body>
+
 </html>

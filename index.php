@@ -24,7 +24,7 @@ include 'header.php'
                                 unwind, explore, and discover.
                             </p>
                             <div class="d-flex flex-shrink-0">
-                                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="Login.html">Book
+                                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="signup.php">Book
                                     now</a>
                             </div>
                         </div>
@@ -34,76 +34,7 @@ include 'header.php'
             </div>
         </div>
     </div>
-    <!--<div class="header-carousel-item">
-            <img src="img/jpams/2.jpg" class="img-fluid w-100" alt="Image">
-            <div class="ratio ratio-16x9"><video autoplay loop muted plays-inline>
-                    <source src="VIDEO/HIGHLIGHT.mp4" type="video/mp4">
-                </video></div>
-            <div class="carousel-caption">
-                <div class="container py-4">
-                    <div class="row g-5 align-items-center">
-                        <div class="col-xl-7 fadeInLeft animated" data-animation="fadeInLeft" data-delay="2s"
-                            style="animation-delay: 2s;">
-                            <div class="text-start">
-                                <h1 class="text-primary text-uppercase fw-bold mb-4">Welcome To</h1>
-                                <h1 class="display-4 text-uppercase text-white mb-4">JPAMS PRIVATE RESORT</h1>
-                                <p class="mb-4 fs-5">Welcome to JPAMS Private Resort, where every stay is a journey of
-                                    discovery and every guest is cherished as a part of our extended family. Your
-                                    adventure begins here, and your story unfolds in the embrace of our tranquil
-                                    paradise.
-                                </p>
-                                <div class="d-flex flex-shrink-0">
-                                    <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Our
-                                        Packages</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-5 fadeInRight animated" data-animation="fadeInRight" data-delay="1s"
-                            style="animation-delay: 1s;">
-                            <div class="ticket-form p-5">
-                                <h2 class="text-dark text-uppercase mb-4">book your ticket</h2>
-                                <form>
-                                    <div class="row g-4">
-                                        <div class="col-12">
-                                            <input type="text" class="form-control border-0 py-2" id="name"
-                                                placeholder="Your Name">
-                                        </div>
-                                        <div class="col-12 col-xl-6">
-                                            <input type="email" class="form-control border-0 py-2" id="email"
-                                                placeholder="Your Email">
-                                        </div>
-                                        <div class="col-12 col-xl-6">
-                                            <input type="phone" class="form-control border-0 py-2" id="phone"
-                                                placeholder="Phone">
-                                        </div>
-                                        <div class="col-12">
-                                            <select class="form-select border-0 py-2"
-                                                aria-label="Default select example">
-                                                <option selected>Select Packages</option>
-                                                <option value="1">Family Packages</option>
-                                                <option value="2">Basic Packages</option>
-                                                <option value="3">Premium Packages</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12">
-                                            <input class="form-control border-0 py-2" type="date">
-                                        </div>
-                                        <div class="col-12">
-                                            <input type="number" class="form-control border-0 py-2" id="number"
-                                                placeholder="Guest">
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="button" class="btn btn-primary w-100 py-2 px-5">Book
-                                                Now</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+
 </div>
 <!-- Carousel End -->
 
@@ -111,74 +42,105 @@ include 'header.php'
 <div class="container-fluid feature py-5">
     <div class="container py-5">
         <div class="row g-4">
-            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+            <!-- Image and Initial Description -->
+            <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="feature-item">
-                    <img src="img/jpams/1.jpg" class="img-fluid rounded w-100" style="height: 500px; object-fit: cover;" alt="Image">
+                    <img src="img/jpams/1.jpg" class="img-fluid rounded" style="width: 100%; height: 500px; object-fit: cover;" alt="Image">
                     <div class="feature-content p-4">
                         <div class="feature-content-inner">
-                            <h4 class="text-white">Debut</h4>
-                            <p class="text-white">A debut is more than just a birthday party. In many ways, a debut is one of the most important events in a young girl’s life, second only to her wedding. It signifies a young girl’s transition to womanhood.</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                            <h4 class="text-white">Special Events</h4>
+                            <p class="text-white"> Whether it’s a wedding, a graduation, a birthday, or a new chapter like retirement, each special event is a reminder that life is a collection of extraordinary moments meant to be celebrated, cherished, and remembered forever.</p>
+                            <a href="reunion.php" class="btn btn-primary rounded-pill py-2 px-4">More Pictures<i class="fa fa-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="feature-item">
-                    <img src="img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 500px; object-fit: cover;" alt="Image">
-                    <div class="feature-content p-4">
-                        <div class="feature-content-inner">
-                            <h4 class="text-white">Reunion</h4>
-                            <p class="text-white">A reunion is a situation when people meet again after they have not seen each other for a long time.</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
-                        </div>
+            <!-- Additional Description -->
+            <div class="col-lg-7 wow fadeInUp d-flex align-items-center justify-content-center position-relative" data-wow-delay="0.4s">
+                <div class="additional-description p-4 bg-light rounded text-center position-relative" style="width: 100%; padding-top: 80px;">
+                    <!-- Badge/Label -->
+                    <div class="rounded bg-primary p-3 position-absolute d-flex justify-content-center align-items-center" style="width: 200px; height: 80px; top: -40px; left: 50%; transform: translateX(-50%); z-index: 10;">
+                        <h3 class="mb-0 text-white">New Events</h3>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="feature-item">
-                    <img src="img/jpams/3.jpg" class="img-fluid rounded w-100" style="height: 500px; object-fit: cover;" alt="Image">
-                    <div class="feature-content p-4">
-                        <div class="feature-content-inner">
-                            <h4 class="text-white">Birthday Celebration</h4>
-                            <p class="text-white">Think about all the awesome stuff you’ve done this year. Your birthday is a great time to give yourself a round of applause for all of it. You’ve tackled challenges, nailed goals, and maybe tried things you never thought you would.</p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                    <!-- Picture and Caption -->
+                    <div class="position-relative d-flex flex-column align-items-center mb-1">
+                        <div class="p-3"> <!-- Added padding container -->
+                            <img src="img/picture/debut/DSC_0068.JPG" alt="Description of the picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
                         </div>
+                        <p class="text-dark mb-2">Debut</p>
                     </div>
+                    <!-- Content -->
+                    <h5 class="text-dark mt-5 pt-2">Additional Information</h5>
+                    <p class="text-dark">The debut is a significant celebration in various cultures, symbolizing a young woman’s transition into adulthood. It’s often celebrated with a grand party, traditional dances, and ceremonies that reflect the girl’s upbringing and values. Family, friends, and the community play a vital role in this event, making it a memorable and meaningful occasion.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- feature end -->
+<!-- Feature End -->
+<!-- Attractions Start -->
+<div class="container-fluid attractions py-5">
+    <div class="container attractions-section py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary">Attractions</h4>
+            <h1 class="display-5 text-white mb-4">Explore JPAMS Private Resort</h1>
+            <p class="text-white mb-0">When you want a quick getaway from Metro Manila, heading to a nearby private
+                resort is a good option. You’ll never run out of choices, as there are a lot of private resorts in
+                the nearby provinces of Bulacan.
+            </p>
+        </div>
+        <div class="owl-carousel attractions-carousel wow fadeInUp" data-wow-delay="0.1s">
+            <div class="attractions-item wow fadeInUp" data-wow-delay="0.2s">
+                <img src="img/jpams/1.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+                <a href="#" class="attractions-name"></a>
+            </div>
+            <div class="attractions-item wow fadeInUp" data-wow-delay="0.4s">
+                <img src="img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+                <a href="#" class="attractions-name"></a>
+            </div>
+            <div class="attractions-item wow fadeInUp" data-wow-delay="0.6s">
+                <img src="img/jpams/3.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+                <a href="#" class="attractions-name"></a>
+            </div>
+            <div class="attractions-item wow fadeInUp" data-wow-delay="0.8s">
+                <img src="img/jpams/4.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+                <a href="#" class="attractions-name"></a>
+            </div>
+            <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
+                <img src="img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+                <a href="#" class="attractions-name"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Attractions End -->
 
 <!-- About Start -->
-<div class="container-fluid about pb-5">
-    <div class="container pb-5">
-        <div class="row g-5">
-            <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div>
-                    <h4 class="text-primary">About JPAMS</h4>
-                    <h1 class="display-5 mb-4">The Best Private Resort For Your Family</h1>
-                    <p class="mb-5">Join us in creating unforgettable memories, forging lasting connections, and
-                        embracing the essence of JPAMS Private Resort. We invite you to unwind, explore, and
-                        discover.
-                    </p>
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="d-flex">
-                                <div class="me-3"><i class="fas fa-glass-cheers fa-3x text-primary"></i></div>
-                                <div>
-                                    <h4>Wedding</h4>
-                                    <p>A wedding is an incredibly special event that marks an important milestone in
-                                        two people’s lives. </p>
+<div class="container-fluid about py-5">
+    <div class="container-fluid about pb-5">
+        <div class="container pb-5">
+            <div class="row g-5">
+                <div class="col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div>
+                        <h4 class="text-primary">About JPAMS</h4>
+                        <h1 class="display-5 mb-4">The Best Private Resort For Your Family</h1>
+                        <p class="mb-5">Welcome to JPAMS Private Resort, a hidden gem where simplicity meets modern comfort. Experience the perfect blend of simplicity and sophistication with our cozy accommodations and top-notch security. Discover a sanctuary where nature’s beauty and modern amenities harmonize seamlessly.</p>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <div class="me-3"><i class="fas fa-glass-cheers fa-3x text-primary"></i></div>
+                                    <div>
+                                        <h4> Book Your Celebration with JPAMS!</h4>
+                                        <p>We're excited to announce a special event to celebrate our recent achievements with JPAMS! Join us for an evening of festivities, recognition, and fun as we honor the hard work and dedication that brought us to this milestone.</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex">
-                                <div class="me-3"><i class="fas fa-dot-circle fa-3x text-primary"></i></div>
-                                <div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <a href="contact.php">
+                                        <div class="me-3"><i class="fas fa-dot-circle fa-3x text-primary"></i></div>
+                                        <div>
+                                    </a>
                                     <h4>It easy to find</h4>
                                     <p>Located at bulacan area</p>
                                 </div>
@@ -186,11 +148,11 @@ include 'header.php'
                         </div>
                         <div class="col-md-6">
                             <div class="d-flex">
-                                <div class="me-3"><i class="fas fa-hand-holding-usd fa-3x text-primary"></i></div>
+                                <div class="me-3"><i class="fas fa-hand-holding-usd fa-3x text-primary"></i>
+                                </div>
                                 <div>
-                                    <h4>Affordable Price</h4>
-                                    <p>One of the primary purposes of resorts is to provide guests with an
-                                        opportunity to relax and unwind from their daily routine. </p>
+                                    <h4>Relax and Unwind at Our Affordable Resort! </h4>
+                                    <p>Escape the hustle and bustle of daily life without breaking the bank! Our resort offers an exceptional retreat with affordable pricing, ensuring you can relax and rejuvenate without worrying about your budget.</p>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +161,7 @@ include 'header.php'
                                 <div class="me-3"><i class="fas fa-lock fa-3x text-primary"></i></div>
                                 <div>
                                     <h4>Safety Site</h4>
-                                    <p>Safety of the guest is important</p>
+                                    <p>At our resort, your safety is our top priority. We have implemented rigorous health and safety protocols to ensure that you and your guests enjoy a worry-free stay. From enhanced sanitation practices to social distancing measures, we’re committed to providing a safe and relaxing environment.</p>
                                 </div>
                             </div>
                         </div>
@@ -346,7 +308,7 @@ include 'header.php'
 <!-- Service End -->
 
 
-<!-- Ticket Packages Start -->
+<!--  Packages Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
@@ -363,7 +325,7 @@ include 'header.php'
                     <p><i class="fa fa-check text-primary me-2"></i>Enjoy JPAMS</p>
                     <p class="mb-5"><i class="fa fa-check text-primary me-2"></i> 3 booking you will have discount
                     </p>
-                    <a href="#" class="btn btn-primary rounded-pill py-3 px-5"> Book Now</a>
+                    <a href="signup.php" class="btn btn-primary rounded-pill py-3 px-5"> Book Now</a>
                 </div>
             </div>
             <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.4s">
@@ -381,7 +343,7 @@ include 'header.php'
                         <p class="mb-4"><i class="fa fa-check text-primary me-2"></i>With Parking Space</p>
                         <p class="mb-4"><i class="fa fa-check text-primary me-2"></i>with Karaoke</p>
                     </div>
-                    <a href="#" class="btn btn-light rounded-pill py-3 px-5"> Book Now</a>
+                    <a href="signup.php" class="btn btn-light rounded-pill py-3 px-5"> Book Now</a>
                 </div>
             </div>
             <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.6s">
@@ -398,52 +360,13 @@ include 'header.php'
                         <p class="mb-4"><i class="fa fa-check text-dark me-2"></i>With Parking Space</p>
                         <p class="mb-4"><i class="fa fa-check text-dark me-2"></i>with Karaoke</p>
                     </div>
-                    <a href="#" class="btn btn-dark rounded-pill py-3 px-5"> Book Now</a>
+                    <a href="signup.php" class="btn btn-dark rounded-pill py-3 px-5"> Book Now</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Ticket Packages End -->
-
-
-<!-- Attractions Start -->
-<div class="container-fluid attractions py-5">
-    <div class="container attractions-section py-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-            <h4 class="text-primary">Attractions</h4>
-            <h1 class="display-5 text-white mb-4">Explore JPAMS Private Resort</h1>
-            <p class="text-white mb-0">When you want a quick getaway from Metro Manila, heading to a nearby private
-                resort is a good option. You’ll never run out of choices, as there are a lot of private resorts in
-                the nearby provinces of Bulacan.
-            </p>
-        </div>
-        <div class="owl-carousel attractions-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="attractions-item wow fadeInUp" data-wow-delay="0.2s">
-                <img src="img/jpams/1.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
-                <a href="#" class="attractions-name"></a>
-            </div>
-            <div class="attractions-item wow fadeInUp" data-wow-delay="0.4s">
-                <img src="img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
-                <a href="#" class="attractions-name"></a>
-            </div>
-            <div class="attractions-item wow fadeInUp" data-wow-delay="0.6s">
-                <img src="img/jpams/3.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
-                <a href="#" class="attractions-name"></a>
-            </div>
-            <div class="attractions-item wow fadeInUp" data-wow-delay="0.8s">
-                <img src="img/jpams/4.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
-                <a href="#" class="attractions-name"></a>
-            </div>
-            <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
-                <img src="img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
-                <a href="#" class="attractions-name"></a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Attractions End -->
-
+<!--  Packages End -->
 
 <!-- Gallery Start -->
 <div class="container-fluid gallery pb-5">
@@ -466,7 +389,7 @@ include 'header.php'
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is a budget-friendly, family-friendly getaway with bunk beds, shared spaces</p>
                         </div>
                     </div>
                 </div>
@@ -480,7 +403,7 @@ include 'header.php'
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is a budget-friendly, family-friendly getaway shared spaces</p>
                         </div>
                     </div>
                 </div>
@@ -494,7 +417,7 @@ include 'header.php'
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is a budget-friendly, family-friendly getaway a pool</p>
                         </div>
                     </div>
                 </div>
@@ -508,7 +431,7 @@ include 'header.php'
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is a budget-friendly, family-friendly getaway a pool</p>
                         </div>
                     </div>
                 </div>
@@ -522,7 +445,7 @@ include 'header.php'
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is perfect for a fun and relaxing vacation.</p>
                         </div>
                     </div>
                 </div>
@@ -536,7 +459,7 @@ include 'header.php'
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>jPAMS.</p>
                         </div>
                     </div>
                 </div>
@@ -836,6 +759,62 @@ include 'header.php'
     </div>
 </div>
 <!-- Testimonial End -->
+<!-- Testimonial End -->
+<style>
+    /* Add your custom styles here */
+    .quick-chat-options {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .quick-chat-option {
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .quick-chat-option:hover {
+        background-color: #2980b9;
+    }
+
+    .homebg {
+        height: 100vh;
+        background-image: url(images/home-bg.png);
+        background-position: center;
+        background-size: cover;
+    }
+
+    .homebgtext {
+        max-width: 500px;
+        position: absolute;
+        top: 50%;
+        left: 200px;
+        transform: translateY(-50%);
+    }
+
+    @media screen and (max-width: 991px) {
+        .homebgtext {
+            padding: 30px;
+            max-width: unset;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    }
+</style>
+<!-- Testimonial End -->
+
+
+<?php
+include 'hicutfile\chatbot.php';
+?>
 
 <?php
 include 'footer.php'

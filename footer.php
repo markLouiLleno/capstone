@@ -8,7 +8,7 @@
                         <h4 class="text-white mb-4"><i class="fas fa-swimmer text-primary me-3"></i>JPMAS</h4>
                         <!-- <img src="img/logo.png" alt="Logo"> -->
                     </a>
-                    <p class="mb-2">This private resort’s location can significantly impact your overall experience.
+                    <p class="mb-2 text-white">This private resort’s location can significantly impact your overall experience.
                         Whether you desire a coastal sanctuary or a retreat, ensure your selected resort
                         aligns with your preferences.</p>
                     <div class="d-flex align-items-center">
@@ -29,14 +29,13 @@
             <div class="col-md-6 col-lg-6 col-xl-2">
                 <div class="footer-item">
                     <h4 class="text-white mb-4">Quick Links</h4>
-                    <a href="about.php"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                    <a href="feature.php"><i class="fas fa-angle-right me-2"></i> Feature</a>
-                    <a href="attraction.php"><i class="fas fa-angle-right me-2"></i> Attractions</a>
-                    <a href="package.php"><i class="fas fa-angle-right me-2"></i> Packages</a>
-                    <a href="contact.php"><i class="fas fa-angle-right me-2"></i> Contact us</a>
+                    <a href="about.php"><i class="fas fa-angle-right me-2 "></i> About Us</a>
+                    <a href="feature.php"><i class="fas fa-angle-right me-2 "></i> Feature</a>
+                    <a href="attraction.php"><i class="fas fa-angle-right me-2 "></i> Attractions</a>
+                    <a href="package.php"><i class="fas fa-angle-right me-2 "></i> Packages</a>
+                    <a href="contact.php"><i class="fas fa-angle-right me-2 "></i> Contact us</a>
                 </div>
             </div>
-
             <div class="col-md-6 col-lg-6 col-xl-4">
                 <div class="footer-item">
                     <h4 class="text-white mb-4">Opening Hours</h4>
@@ -54,7 +53,6 @@
                             <p class="mb-0"><i class="fas fa-clock text-primary me-2"></i> 07:00 AM - 19:00 PM</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -86,6 +84,67 @@
 <script src="lib/counterup/counterup.min.js"></script>
 <script src="lib/lightbox/js/lightbox.min.js"></script>
 <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- JavaScript calendars -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/chart/chart.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+
+
+<!-- JavaScript Libraries -->
+
+
+<!-- FullCalendar Initialization -->
+<script>
+    $(document).ready(function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth', // Can change to 'timeGridWeek', 'timeGridDay', etc.
+            events: function(fetchInfo, successCallback, failureCallback) {
+                $.ajax({
+                    url: 'fetch-events.php', // The PHP file where events are fetched from the server
+                    dataType: 'json',
+                    success: function(response) {
+                        var events = [];
+                        $.each(response, function(index, item) {
+                            events.push({
+                                title: item.title,
+                                start: item.start, // ISO8601 date format: "YYYY-MM-DDTHH:MM:SSZ"
+                                end: item.end,
+                                allDay: item.allDay // true or false
+                            });
+                        });
+                        successCallback(events);
+                    },
+                    error: function() {
+                        failureCallback();
+                    }
+                });
+            },
+            editable: true, // Allow editing
+            selectable: true, // Allow selection
+            eventClick: function(info) {
+                alert('Event: ' + info.event.title);
+                // Can add additional logic on event click
+            },
+            eventColor: '#378006' // Optional: Customize event color
+        });
+
+        calendar.render();
+    });
+</script>
+
+
 
 
 <!-- Template Javascript -->

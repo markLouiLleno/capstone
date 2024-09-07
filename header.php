@@ -28,6 +28,9 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="hicutfile\Chatbot\style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -42,37 +45,27 @@
 
     <!-- Navbar & Hero Start -->
     <div class="container-fluid nav-bar sticky-top px-4 py-2 py-lg-0">
-        <nav class="navbar navbar-expand-lg navbar-light"><img src="img/JPAMS LOGO.png" height="80px" alt="Logo" loading="lazy" />
-            <a href="index.php" class="navbar-brand p-2">
+        <a href="index.php">
+            <nav class="navbar navbar-expand-lg navbar-light"><img src="img/JPAMS LOGO.png" height="80px" alt="Logo" loading="lazy" />
                 <h1 class="display-8 text-dark">
                     <i></i>
                 </h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="index.php" class="nav-item nav-link active">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About</a>
-
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="feature.php" class="dropdown-item">Our Features</a>
-                            <a href="gallery.php" class="dropdown-item">Our Gallery</a>
-                            <a href="package.php" class="dropdown-item">Packages</a>
-                            <a href="team.php" class="dropdown-item">Our Team</a>
-                            <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                        </div>
-                    </div>
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
-                </div>
-                <div class="team-icon d-none d-xl-flex justify-content-center me-3">
-                    <a class="btn btn-square btn-light rounded-circle mx-1" href="https://www.facebook.com/profile.php?id=100081561532377"><i class="fab fa-facebook-f"></i></a>
-                </div>
-                <a href="signin.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Log-in</a>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0">
+                <a href="index.php" class="nav-item nav-link active">Home</a>
+                <a href="about.php" class="nav-item nav-link">About</a>
+                <a href="package.php" class="nav-item nav-link">Service</a>
+                <a href="contact.php" class="nav-item nav-link">Contact</a>
             </div>
+            <div class="team-icon d-none d-xl-flex justify-content-center me-3">
+                <a class="btn btn-square btn-light rounded-circle mx-1" href="https://www.facebook.com/profile.php?id=100081561532377"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <a href="signin.php" class="btn btn-primary rounded-pill py-2 px-4 flex-shrink-0">Log-in</a>
+        </div>
         </nav>
     </div>
     <!-- Navbar & Hero End -->
