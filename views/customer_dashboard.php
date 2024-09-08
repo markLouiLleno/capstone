@@ -2,20 +2,6 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  This is the regular user page
-</body>
-
-</html>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
   <meta charset="utf-8">
   <title>JPAMS</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -32,16 +18,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- Libraries Stylesheet -->
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../lib/animate/animate.min.css" rel="stylesheet">
+  <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
   <!-- Customized Bootstrap Stylesheet -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Template Stylesheet -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
@@ -60,7 +48,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <!-- Brand Logo -->
       <a href="UserLanding.php" class="navbar-brand">
-        <img src="img/JPAMS LOGO.png" alt="Logo" loading="lazy" style="max-height: 80px; width: auto;">
+        <img src="../img/JPAMS LOGO.png" alt="Logo" loading="lazy" style="max-height: 80px; width: auto;">
       </a>
       <!-- Toggler Button -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -73,20 +61,13 @@
             <a href="index.php" class="nav-link active">Home</a>
           </li>
           <li class="nav-item">
-            <a href="about.php" class="nav-link">About</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-            <ul class="dropdown-menu m-0">
-              <li><a href="feature.php" class="dropdown-item">Our Features</a></li>
-              <li><a href="gallery.php" class="dropdown-item">Our Gallery</a></li>
-              <li><a href="package.php" class="dropdown-item">Packages</a></li>
-              <li><a href="team.php" class="dropdown-item">Our Team</a></li>
-              <li><a href="testimonial.php" class="dropdown-item">Testimonial</a></li>
-            </ul>
+            <a href="userpages\about.php" class="nav-link">About</a>
           </li>
           <li class="nav-item">
-            <a href="contact.php" class="nav-link">Contact</a>
+            <a href="userpages\package.php" class="nav-link">Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="userpages\contact.php" class="nav-link">Contact</a>
           </li>
         </ul>
         <!-- Social Icons -->
@@ -99,11 +80,11 @@
         <!-- User Dropdown -->
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+            <img class="rounded-circle me-lg-2" src="../img/user.jpg" alt="" style="width: 40px; height: 40px;">
             <span class="d-none d-lg-inline-flex">John Doe</span>
           </a>
           <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-            <a href="#" class="dropdown-item">My Profile</a>
+            <a href="userpages\index.php" class="dropdown-item">My Profile</a>
             <a href="#" class="dropdown-item">Settings</a>
             <a href="#" class="dropdown-item">Log Out</a>
           </div>
@@ -115,15 +96,13 @@
 
 
 
-
-
   <!-- Carousel Start -->
   <div class="header-carousel owl-carousel">
     <div class="header-carousel-item">
       <!-- <img src="img/jpams/1.jpg" class="img-fluid w-100" alt="Image">-->
       <div class="ratio ratio-ratio ratio-21x9">
         <div>21x9</div>"><video autoplay loop muted plays-inline class="w-full h-auto">
-          <source src="VIDEO/HIGHLIGHT.mp4" type="video/mp4">
+          <source src="../VIDEO/HIGHLIGHT.mp4" type="video/mp4">
         </video>
       </div>
       <div class="carousel-caption">
@@ -178,28 +157,34 @@
     <div class="container py-5">
       <div class="row g-4">
         <!-- Image and Initial Description -->
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+        <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.2s">
           <div class="feature-item">
-            <img src="img/jpams/1.jpg" class="img-fluid rounded w-100" style="height: 500px; object-fit: cover;" alt="Image">
+            <img src="../img/jpams/1.jpg" class="img-fluid rounded" style="width: 100%; height: 500px; object-fit: cover;" alt="Image">
             <div class="feature-content p-4">
               <div class="feature-content-inner">
-                <h4 class="text-white">Debut</h4>
-                <p class="text-white">A debut is more than just a birthday party. In many ways, a debut is one of the most important events in a young girl’s life, second only to her wedding. It signifies a young girl’s transition to womanhood.</p>
-                <a href="debut.php" class="btn btn-primary rounded-pill py-2 px-4">More Pictures<i class="fa fa-arrow-right ms-1"></i></a>
+                <h4 class="text-white">Special Events</h4>
+                <p class="text-white"> Whether it’s a wedding, a graduation, a birthday, or a new chapter like retirement, each special event is a reminder that life is a collection of extraordinary moments meant to be celebrated, cherished, and remembered forever.</p>
+                <a href="reunion.php" class="btn btn-primary rounded-pill py-2 px-4">More Pictures<i class="fa fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
         </div>
-
         <!-- Additional Description -->
-        <div class="col-lg-8 wow fadeInUp d-flex align-items-center justify-content-center position-relative" data-wow-delay="0.4s">
-          <div class="additional-description p-4 bg-light rounded text-center position-relative" style="width: 100%;">
+        <div class="col-lg-7 wow fadeInUp d-flex align-items-center justify-content-center position-relative" data-wow-delay="0.4s">
+          <div class="additional-description p-4 bg-light rounded text-center position-relative" style="width: 100%; padding-top: 80px;">
             <!-- Badge/Label -->
-            <div class="rounded bg-primary p-3 position-absolute d-flex justify-content-center align-items-center" style="width: 200px; height: 80px; top: -40px; left: 50%; transform: translateX(-50%);">
-              <h3 class="mb-0 text-white">10 Years</h3>
+            <div class="rounded bg-primary p-3 position-absolute d-flex justify-content-center align-items-center" style="width: 200px; height: 80px; top: -40px; left: 50%; transform: translateX(-50%); z-index: 10;">
+              <h3 class="mb-0 text-white">New Events</h3>
+            </div>
+            <!-- Picture and Caption -->
+            <div class="position-relative d-flex flex-column align-items-center mb-1">
+              <div class="p-3"> <!-- Added padding container -->
+                <img src="../img/picture/debut/DSC_0068.JPG" alt="Description of the picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
+              </div>
+              <p class="text-dark mb-2">Debut</p>
             </div>
             <!-- Content -->
-            <h5 class="text-dark mt-5 pt-3">Additional Information</h5>
+            <h5 class="text-dark mt-5 pt-2">Additional Information</h5>
             <p class="text-dark">The debut is a significant celebration in various cultures, symbolizing a young woman’s transition into adulthood. It’s often celebrated with a grand party, traditional dances, and ceremonies that reflect the girl’s upbringing and values. Family, friends, and the community play a vital role in this event, making it a memorable and meaningful occasion.</p>
           </div>
         </div>
@@ -268,7 +253,7 @@
               <div class="row g-0">
                 <div class="col-lg-12">
                   <div class="rounded mb-4">
-                    <img src="img/1 (2).jpg" class="img-fluid rounded w-100" alt="">
+                    <img src="../img/1 (2).jpg" class="img-fluid rounded w-100" alt="">
                   </div>
                   <div class="row gx-4 gy-0">
                     <div class="col-6">
@@ -323,23 +308,23 @@
       </div>
       <div class="owl-carousel attractions-carousel wow fadeInUp" data-wow-delay="0.1s">
         <div class="attractions-item wow fadeInUp" data-wow-delay="0.2s">
-          <img src="img/jpams/1.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+          <img src="../img/jpams/1.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
           <a href="#" class="attractions-name"></a>
         </div>
         <div class="attractions-item wow fadeInUp" data-wow-delay="0.4s">
-          <img src="img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+          <img src="../img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
           <a href="#" class="attractions-name"></a>
         </div>
         <div class="attractions-item wow fadeInUp" data-wow-delay="0.6s">
-          <img src="img/jpams/3.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+          <img src="../img/jpams/3.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
           <a href="#" class="attractions-name"></a>
         </div>
         <div class="attractions-item wow fadeInUp" data-wow-delay="0.8s">
-          <img src="img/jpams/4.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+          <img src="../img/jpams/4.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
           <a href="#" class="attractions-name"></a>
         </div>
         <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
-          <img src="img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
+          <img src="../img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 300px; object-fit: cover;" alt="">
           <a href="#" class="attractions-name"></a>
         </div>
       </div>
@@ -363,9 +348,9 @@
       <div class="row g-4">
         <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
           <div class="gallery-item">
-            <img src="img/cap (1).jpg" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
+            <img src="../img/cap (1).jpg" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
             <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-              <a href="img/cap (1).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">
+              <a href="../img/cap (1).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">
                 <i class="fas fa-search-plus"></i>
               </a>
               <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
@@ -377,9 +362,9 @@
 
         <div class="col-md-3 wow fadeInUp" data-wow-delay="0.4s">
           <div class="gallery-item">
-            <img src="img/cap (2).jpg" class="img-fluid rounded w-100 h-100" alt="">
+            <img src="../img/cap (2).jpg" class="img-fluid rounded w-100 h-100" alt="">
             <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-              <a href="img/cap (2).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-2">
+              <a href="../img/cap (2).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-2">
                 <i class="fas fa-search-plus"></i>
               </a>
               <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
@@ -391,9 +376,9 @@
 
         <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s">
           <div class="gallery-item">
-            <img src="img/cap (3).jpg" class="img-fluid rounded w-100 h-100" alt="">
+            <img src="../img/cap (3).jpg" class="img-fluid rounded w-100 h-100" alt="">
             <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-              <a href="img/cap (3).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-3">
+              <a href="../img/cap (3).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-3">
                 <i class="fas fa-search-plus"></i>
               </a>
               <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
@@ -405,9 +390,9 @@
 
         <div class="col-md-3 wow fadeInUp" data-wow-delay="0.2s">
           <div class="gallery-item">
-            <img src="img/1 (4).jpg" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
+            <img src="../img/1 (4).jpg" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
             <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-              <a href="img/1 (4).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-4">
+              <a href="../img/1 (4).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-4">
                 <i class="fas fa-search-plus"></i>
               </a>
               <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
@@ -419,9 +404,9 @@
 
         <div class="col-md-3 wow fadeInUp" data-wow-delay="0.4s">
           <div class="gallery-item">
-            <img src="img/1 (5).jpg" class="img-fluid rounded w-100 h-100" alt="">
+            <img src="../img/1 (5).jpg" class="img-fluid rounded w-100 h-100" alt="">
             <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-              <a href="img/1 (5).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-5">
+              <a href="../img/1 (5).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-5">
                 <i class="fas fa-search-plus"></i>
               </a>
               <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
@@ -433,9 +418,9 @@
 
         <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
           <div class="gallery-item">
-            <img src="img/cap 6.jpg" class="img-fluid rounded w-100 h-100" alt="">
+            <img src="../img/cap 6.jpg" class="img-fluid rounded w-100 h-100" alt="">
             <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-              <a href="img/cap 6.jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-6">
+              <a href="../img/cap 6.jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-6">
                 <i class="fas fa-search-plus"></i>
               </a>
               <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
@@ -449,7 +434,157 @@
   </div>
   <!-- Gallery End -->
 
+  h<!-- Footer Start -->
+  <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-md-6 col-lg-6 col-xl-4">
+          <div class="footer-item">
+            <a href="index.html" class="p-0">
+              <h4 class="text-white mb-4"><i class="fas fa-swimmer text-primary me-3"></i>JPMAS</h4>
+              <!-- <img src="img/logo.png" alt="Logo"> -->
+            </a>
+            <p class="mb-2 text-white">This private resort’s location can significantly impact your overall experience.
+              Whether you desire a coastal sanctuary or a retreat, ensure your selected resort
+              aligns with your preferences.</p>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-map-marker-alt text-primary me-3"></i>
+              <p class="text-white mb-0">Mountainview Subdivision, Blk 7 Lot 7 Camachille St, San Jose del
+                Monte City</p>
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-envelope text-primary me-3"></i>
+              <p class="text-white mb-0">JPAMS@gmail.com</p>
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fa fa-phone-alt text-primary me-3"></i>
+              <p class="text-white mb-0">(+63) 9090 27890</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-2">
+          <div class="footer-item">
+            <h4 class="text-white mb-4">Quick Links</h4>
+            <a href="about.php"><i class="fas fa-angle-right me-2 "></i> About Us</a>
+            <a href="feature.php"><i class="fas fa-angle-right me-2 "></i> Feature</a>
+            <a href="attraction.php"><i class="fas fa-angle-right me-2 "></i> Attractions</a>
+            <a href="package.php"><i class="fas fa-angle-right me-2 "></i> Packages</a>
+            <a href="contact.php"><i class="fas fa-angle-right me-2 "></i> Contact us</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-4">
+          <div class="footer-item">
+            <h4 class="text-white mb-4">Opening Hours</h4>
+            <div class="opening-date mb-3 pb-3">
+              <div class="opening-clock flex-shrink-0">
+                <h6 class="text-white mb-0 me-auto">Monday - Friday:</h6>
+                <p class="mb-0"><i class="fas fa-clock text-primary me-2"></i> 07:00 AM - 19:00 PM</p>
+              </div>
+              <div class="opening-clock flex-shrink-0">
+                <h6 class="text-white mb-0 me-auto">Saturday - Sunday:</h6>
+                <p class="mb-0"><i class="fas fa-clock text-primary me-2"></i> 07:00 AM - 19:00 PM</p>
+              </div>
+              <div class="opening-clock flex-shrink-0">
+                <h6 class="text-white mb-0 me-auto">Holiday:</h6>
+                <p class="mb-0"><i class="fas fa-clock text-primary me-2"></i> 07:00 AM - 19:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer End -->
 
-  <?php
-  include 'footer.php'
-  ?>
+  <!-- Copyright Start -->
+  <div class="container-fluid copyright py-4">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-md-0">
+          <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>JPMAS</a>, All right
+            reserved.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright End -->
+
+
+
+  <!-- JavaScript Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../lib/wow/wow.min.js"></script>
+  <script src="../lib/easing/easing.min.js"></script>
+  <script src="../lib/waypoints/waypoints.min.js"></script>
+  <script src="../lib/counterup/counterup.min.js"></script>
+  <script src="../lib/lightbox/js/lightbox.min.js"></script>
+  <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- JavaScript calendars -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../lib/chart/chart.min.js"></script>
+  <script src="../lib/easing/easing.min.js"></script>
+  <script src="../lib/waypoints/waypoints.min.js"></script>
+  <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="../lib/tempusdominus/js/moment.min.js"></script>
+  <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+
+
+  <!-- JavaScript Libraries -->
+
+
+  <!-- FullCalendar Initialization -->
+  <script>
+    $(document).ready(function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth', // Can change to 'timeGridWeek', 'timeGridDay', etc.
+        events: function(fetchInfo, successCallback, failureCallback) {
+          $.ajax({
+            url: 'fetch-events.php', // The PHP file where events are fetched from the server
+            dataType: 'json',
+            success: function(response) {
+              var events = [];
+              $.each(response, function(index, item) {
+                events.push({
+                  title: item.title,
+                  start: item.start, // ISO8601 date format: "YYYY-MM-DDTHH:MM:SSZ"
+                  end: item.end,
+                  allDay: item.allDay // true or false
+                });
+              });
+              successCallback(events);
+            },
+            error: function() {
+              failureCallback();
+            }
+          });
+        },
+        editable: true, // Allow editing
+        selectable: true, // Allow selection
+        eventClick: function(info) {
+          alert('Event: ' + info.event.title);
+          // Can add additional logic on event click
+        },
+        eventColor: '#378006' // Optional: Customize event color
+      });
+
+      calendar.render();
+    });
+  </script>
+
+
+
+
+  <!-- Template Javascript -->
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

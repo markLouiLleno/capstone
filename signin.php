@@ -281,7 +281,7 @@ $auth_url = $client->createAuthUrl();
                                     window.location.href = 'views/admin_dashboard.php';
                                     break;
                                 case 'customer':
-                                    window.location.href = 'user_dashboard.php';
+                                    window.location.href = 'views/user_dashboard.php';
                                     break;
                             }
                         } else {
