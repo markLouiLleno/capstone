@@ -47,7 +47,7 @@
   <div class="container-fluid nav-bar sticky-top px-4 py-2 py-lg-0">
     <nav class="navbar navbar-expand-lg navbar-light">
       <!-- Brand Logo -->
-      <a href="UserLanding.php" class="navbar-brand">
+      <a href="customer_dashboard.php" class="navbar-brand">
         <img src="../img/JPAMS LOGO.png" alt="Logo" loading="lazy" style="max-height: 80px; width: auto;">
       </a>
       <!-- Toggler Button -->
@@ -58,16 +58,16 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mx-auto py-0">
           <li class="nav-item">
-            <a href="index.php" class="nav-link active">Home</a>
+            <a href="customer_dashboard.php" class="nav-link active">Home</a>
           </li>
           <li class="nav-item">
-            <a href="userpages\about.php" class="nav-link">About</a>
+            <a href="../userpages/about.php" class="nav-link">About</a>
           </li>
           <li class="nav-item">
-            <a href="userpages\package.php" class="nav-link">Services</a>
+            <a href="../userpages/package.php" class="nav-link">Services</a>
           </li>
           <li class="nav-item">
-            <a href="userpages\contact.php" class="nav-link">Contact</a>
+            <a href="../userpages/contact.php" class="nav-link">Contact</a>
           </li>
         </ul>
         <!-- Social Icons -->
@@ -118,7 +118,7 @@
                   unwind, explore, and discover.
                 </p>
                 <div class="d-flex flex-shrink-0">
-                  <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="signup.php">Book
+                  <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="../Hotel-booking-system/reservation.php">Book
                     now</a>
                 </div>
               </div>
@@ -164,7 +164,7 @@
               <div class="feature-content-inner">
                 <h4 class="text-white">Special Events</h4>
                 <p class="text-white"> Whether it’s a wedding, a graduation, a birthday, or a new chapter like retirement, each special event is a reminder that life is a collection of extraordinary moments meant to be celebrated, cherished, and remembered forever.</p>
-                <a href="reunion.php" class="btn btn-primary rounded-pill py-2 px-4">More Pictures<i class="fa fa-arrow-right ms-1"></i></a>
+                <a href="../userpages/reunion.php" class="btn btn-primary rounded-pill py-2 px-4">More Pictures<i class="fa fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
@@ -434,7 +434,7 @@
   </div>
   <!-- Gallery End -->
 
-  h<!-- Footer Start -->
+  <!-- Footer Start -->
   <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
     <div class="container py-5">
       <div class="row g-5">
@@ -543,7 +543,6 @@
   <script>
     $(document).ready(function() {
       var calendarEl = document.getElementById('calendar');
-
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth', // Can change to 'timeGridWeek', 'timeGridDay', etc.
         events: function(fetchInfo, successCallback, failureCallback) {

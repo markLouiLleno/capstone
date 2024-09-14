@@ -74,7 +74,7 @@ include 'header.php'
                         <div class="row g-0">
                             <div class="col-lg-12">
                                 <div class="rounded mb-4">
-                                    <img src="img/1 (2).jpg" class="img-fluid rounded w-100" alt="">
+                                    <img src="../img/1 (2).jpg" class="img-fluid rounded w-100" alt="">
                                 </div>
                                 <div class="row gx-4 gy-0">
                                     <div class="col-6">
@@ -119,46 +119,42 @@ include 'header.php'
 <div class="container-fluid feature py-5">
     <div class="container py-5">
         <div class="row g-4">
-            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+            <!-- Image and Initial Description -->
+            <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="feature-item">
-                    <img src="img/jpams/1.jpg" class="img-fluid rounded w-100" style="height: 500px; object-fit: cover;" alt="Image">
+                    <img src="../img/jpams/1.jpg" class="img-fluid rounded" style="width: 100%; height: 500px; object-fit: cover;" alt="Image">
                     <div class="feature-content p-4">
                         <div class="feature-content-inner">
-                            <h4 class="text-white">Debut</h4>
-                            <p class="text-white">A debut is more than just a birthday party. In many ways, a debut is one of the most important events in a young girl’s life, second only to her wedding. It signifies a young girl’s transition to womanhood.</p>
-                            <a href="debut.php" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                            <h4 class="text-white">Special Events</h4>
+                            <p class="text-white"> Whether it’s a wedding, a graduation, a birthday, or a new chapter like retirement, each special event is a reminder that life is a collection of extraordinary moments meant to be celebrated, cherished, and remembered forever.</p>
+                            <a href="../reunion.php" class="btn btn-primary rounded-pill py-2 px-4">More Pictures<i class="fa fa-arrow-right ms-1"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="feature-item">
-                    <img src="img/jpams/2.jpg" class="img-fluid rounded w-100" style="height: 500px; object-fit: cover;" alt="Image">
-                    <div class="feature-content p-4">
-                        <div class="feature-content-inner">
-                            <h4 class="text-white">Reunion</h4>
-                            <p class="text-white">A reunion is a situation when people meet again after they have not seen each other for a long time.</p>
-                            <a href="reunion.php" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
-                        </div>
+            <!-- Additional Description -->
+            <div class="col-lg-7 wow fadeInUp d-flex align-items-center justify-content-center position-relative" data-wow-delay="0.4s">
+                <div class="additional-description p-4 bg-light rounded text-center position-relative" style="width: 100%; padding-top: 80px;">
+                    <!-- Badge/Label -->
+                    <div class="rounded bg-primary p-3 position-absolute d-flex justify-content-center align-items-center" style="width: 200px; height: 80px; top: -40px; left: 50%; transform: translateX(-50%); z-index: 10;">
+                        <h3 class="mb-0 text-white">New Events</h3>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="feature-item">
-                    <img src="img/jpams/3.jpg" class="img-fluid rounded w-100" style="height: 500px; object-fit: cover;" alt="Image">
-                    <div class="feature-content p-4">
-                        <div class="feature-content-inner">
-                            <h4 class="text-white">Birthday Celebration</h4>
-                            <p class="text-white">Think about all the awesome stuff you’ve done this year. Your birthday is a great time to give yourself a round of applause for all of it. You’ve tackled challenges, nailed goals, and maybe tried things you never thought you would.</p>
-                            <a href="birthday.php" class="btn btn-primary rounded-pill py-2 px-4">Read More <i class="fa fa-arrow-right ms-1"></i></a>
+                    <!-- Picture and Caption -->
+                    <div class="position-relative d-flex flex-column align-items-center mb-1">
+                        <div class="p-3"> <!-- Added padding container -->
+                            <img src="../img/picture/debut/DSC_0068.JPG" alt="Description of the picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
                         </div>
+                        <p class="text-dark mb-2">Debut</p>
                     </div>
+                    <!-- Content -->
+                    <h5 class="text-dark mt-5 pt-2">Additional Information</h5>
+                    <p class="text-dark">The debut is a significant celebration in various cultures, symbolizing a young woman’s transition into adulthood. It’s often celebrated with a grand party, traditional dances, and ceremonies that reflect the girl’s upbringing and values. Family, friends, and the community play a vital role in this event, making it a memorable and meaningful occasion.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Feature end -->
+<!-- Feature End -->
 
 <!-- Gallery Start -->
 <div class="container-fluid gallery pb-5">
@@ -175,13 +171,13 @@ include 'header.php'
         <div class="row g-4">
             <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="gallery-item">
-                    <img src="img/cap (1).jpg" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
+                    <img src="../img/cap (1).jpg" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
                     <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <a href="img/cap (1).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">
+                        <a href="../img/cap (1).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is a budget-friendly, family-friendly getaway with bunk beds, shared spaces</p>
                         </div>
                     </div>
                 </div>
@@ -189,13 +185,13 @@ include 'header.php'
 
             <div class="col-md-3 wow fadeInUp" data-wow-delay="0.4s">
                 <div class="gallery-item">
-                    <img src="img/cap (2).jpg" class="img-fluid rounded w-100 h-100" alt="">
+                    <img src="../img/cap (2).jpg" class="img-fluid rounded w-100 h-100" alt="">
                     <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <a href="img/cap (2).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-2">
+                        <a href="../img/cap (2).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-2">
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is a budget-friendly, family-friendly getaway shared spaces</p>
                         </div>
                     </div>
                 </div>
@@ -203,13 +199,13 @@ include 'header.php'
 
             <div class="col-md-3 wow fadeInUp" data-wow-delay="0.6s">
                 <div class="gallery-item">
-                    <img src="img/cap (3).jpg" class="img-fluid rounded w-100 h-100" alt="">
+                    <img src="../img/cap (3).jpg" class="img-fluid rounded w-100 h-100" alt="">
                     <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <a href="img/cap (3).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-3">
+                        <a href="../img/cap (3).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-3">
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is a budget-friendly, family-friendly getaway a pool</p>
                         </div>
                     </div>
                 </div>
@@ -217,13 +213,13 @@ include 'header.php'
 
             <div class="col-md-3 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="gallery-item">
-                    <img src="img/1 (4).jpg" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
+                    <img src="../img/1 (4).jpg" class="img-fluid rounded w-100 h-100" style="object-fit: cover;" alt="">
                     <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <a href="img/1 (4).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-4">
+                        <a href="../img/1 (4).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-4">
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is a budget-friendly, family-friendly getaway a pool</p>
                         </div>
                     </div>
                 </div>
@@ -231,13 +227,13 @@ include 'header.php'
 
             <div class="col-md-3 wow fadeInUp" data-wow-delay="0.4s">
                 <div class="gallery-item">
-                    <img src="img/1 (5).jpg" class="img-fluid rounded w-100 h-100" alt="">
+                    <img src="../img/1 (5).jpg" class="img-fluid rounded w-100 h-100" alt="">
                     <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <a href="img/1 (5).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-5">
+                        <a href="../img/1 (5).jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-5">
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>JPAMS Private Resort is perfect for a fun and relaxing vacation.</p>
                         </div>
                     </div>
                 </div>
@@ -245,13 +241,13 @@ include 'header.php'
 
             <div class="col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                 <div class="gallery-item">
-                    <img src="img/cap 6.jpg" class="img-fluid rounded w-100 h-100" alt="">
+                    <img src="../img/cap 6.jpg" class="img-fluid rounded w-100 h-100" alt="">
                     <div class="search-icon" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <a href="img/cap 6.jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-6">
+                        <a href="../img/cap 6.jpg" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-6">
                             <i class="fas fa-search-plus"></i>
                         </a>
                         <div class="message-box" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; width: 100%;">
-                            <p>Your message here.</p>
+                            <p>jPAMS.</p>
                         </div>
                     </div>
                 </div>
@@ -282,7 +278,7 @@ include 'header.php'
                                 <p class="mb-0">Project Manager</p>
                             </div>
                             <div>
-                                <img src="img/team (1).jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                                <img src="../img/team (1).jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                             </div>
                         </div>
                         <div class="team-icon rounded-pill my-4 p-3">
@@ -308,7 +304,7 @@ include 'header.php'
                                 </p>
                             </div>
                             <div>
-                                <img src="img/symon.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                                <img src="../img/symon.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                             </div>
                         </div>
                         <div class="team-icon rounded-pill my-4 p-3">
@@ -333,7 +329,7 @@ include 'header.php'
                                 <p class="mb-0">System Analyst</p>
                             </div>
                             <div>
-                                <img src="img/frnz.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                                <img src="../img/frnz.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                             </div>
                         </div>
                         <div class="team-icon rounded-pill my-4 p-3">
@@ -358,7 +354,7 @@ include 'header.php'
                                 <p class="mb-0">Programmer</p>
                             </div>
                             <div>
-                                <img src="img/team (2).jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
+                                <img src="../img/team (2).jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                             </div>
                         </div>
                         <div class="team-icon rounded-pill my-4 p-3">

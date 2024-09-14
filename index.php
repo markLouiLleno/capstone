@@ -78,6 +78,7 @@ include 'header.php'
     </div>
 </div>
 <!-- Feature End -->
+ 
 <!-- Attractions Start -->
 <div class="container-fluid attractions py-5">
     <div class="container attractions-section py-5">
