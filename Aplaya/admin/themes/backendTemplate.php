@@ -215,35 +215,39 @@ admin_logged_in();
 			<p>&copy; JPAMS </p>
 
 			<script>
+				// Function to check/uncheck all checkboxes
 				function checkall(selector) {
-					if (document.getElementById('chkall').checked == true) {
-						var chkelement = document.getElementsByName(selector);
-						for (var i = 0; i < chkelement.length; i++) {
-							chkelement.item(i).checked = true;
-						}
-					} else {
-						var chkelement = document.getElementsByName(selector);
-						for (var i = 0; i <script chkelement.length; i++) {
-							chkelement.item(i).checked = false;
-						}
+					var chkelement = document.getElementsByName(selector);
+					var isChecked = document.getElementById('chkall').checked;
+
+					for (var i = 0; i < chkelement.length; i++) {
+						chkelement[i].checked = isChecked;
 					}
 				}
 
+				// Function to allow only numeric values in a text box
 				function checkNumber(textBox) {
 					while (textBox.value.length > 0 && isNaN(textBox.value)) {
-						textBox.value = textBox.value.substring(0, textBox.value.length - 1)
+						textBox.value = textBox.value.substring(0, textBox.value.length - 1);
 					}
 					textBox.value = trim(textBox.value);
 				}
-				//
+
+				// Function to allow only alphabetic values in a text box
 				function checkText(textBox) {
 					var alphaExp = /^[a-zA-Z]+$/;
 					while (textBox.value.length > 0 && !textBox.value.match(alphaExp)) {
-						textBox.value = textBox.value.substring(0, textBox.value.length - 1)
+						textBox.value = textBox.value.substring(0, textBox.value.length - 1);
 					}
 					textBox.value = trim(textBox.value);
 				}
+
+				// Helper function to trim whitespace from a string
+				function trim(str) {
+					return str.replace(/^\s+|\s+$/g, '');
+				}
 			</script>
+
 		</footer>
 	</div>
 	<!--/.container-->

@@ -1,4 +1,4 @@
-<?php //require_once("includes/initialize.php"); 
+<?php require_once("includes/initialize.php");
 ?>
 <!--End of Header-->
 <div class="container">

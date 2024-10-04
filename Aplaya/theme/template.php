@@ -132,7 +132,6 @@ if (isset($_POST['avail'])) {
 
 	<!-- Header CSS -->
 	<style>
-
 		.navbar-inverse .navbar-brand,
 		.navbar-inverse .navbar-nav>li>a {
 			color: #FFF;
@@ -140,7 +139,7 @@ if (isset($_POST['avail'])) {
 			padding-bottom: 15px;
 		}
 
-		
+
 
 		/* Ensure proper vertical alignment */
 		.navbar-nav>li>a {
@@ -167,7 +166,7 @@ if (isset($_POST['avail'])) {
 				<!-- <div class="well"> -->
 				<div style="float:left; width:370px; margin-left:15px;">
 					<div style="float:left; width:70px; margin-bottom:10px;">
-						<img src="<?php echo WEB_ROOT; ?>images/vista-aplaya-resort.jpg" width="1110px" height="300px" style="-webkit-border-radius:5px; -moz-border-radius:5px;" alt="Image">
+						<img src="<?php echo WEB_ROOT; ?>images/IMG_9392.jpg" width="1110px" height="300px" style="-webkit-border-radius:5px; -moz-border-radius:5px;" alt="Image">
 					</div>
 				</div>
 
