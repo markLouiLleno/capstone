@@ -1,3 +1,96 @@
+<?php
+// Check if a session is already active
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+// Include database connection
+if (!include '../userpages/db_connection.php') {
+  die("Failed to include database connection.");
+}
+
+// Get the user ID (assuming you have it; you can set it based on session or request)
+$userId = 1; // Change this as needed
+
+// Fetch user data from the database, including profile_picture
+$query = "SELECT name, email, bio, profile_picture FROM usersp WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc(); // Fetch user data as an associative array
+
+// Initialize variables to avoid undefined index warnings
+$name = isset($user['name']) ? $user['name'] : '';
+$email = isset($user['email']) ? $user['email'] : '';
+$bio = isset($user['bio']) ? $user['bio'] : '';
+$profilePicture = isset($user['profile_picture']) ? $user['profile_picture'] : 'img/user.jpg'; // Use existing profile picture
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Get data from POST
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $bio = $_POST['bio'];
+
+  // Initialize a variable to hold the new profile picture path
+  $newProfilePicture = $profilePicture; // Default to existing picture
+
+  // Handle file upload
+  if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
+    // File upload settings
+    $uploadDir = 'img/'; // Directory to save uploaded images
+    $uploadFile = $uploadDir . basename($_FILES['profile_picture']['name']);
+    $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+    $validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+    // Check if file is an image
+    $check = getimagesize($_FILES['profile_picture']['tmp_name']);
+    if ($check !== false && in_array($imageFileType, $validExtensions)) {
+      // Move the uploaded file to the desired directory
+      if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $uploadFile)) {
+        $newProfilePicture = $uploadFile; // Update the new profile picture path
+      } else {
+        echo "Error moving uploaded file.";
+      }
+    } else {
+      echo "File is not an image or unsupported file type.";
+    }
+  }
+
+  // Prepare the SQL update statement
+  $updateQuery = "UPDATE usersp SET name = ?, email = ?, bio = ?, profile_picture = ? WHERE id = ?";
+  $stmt = $conn->prepare($updateQuery);
+
+  if (!$stmt) {
+    die("Prepare failed: " . $conn->error);
+  }
+
+  // Bind parameters, including the (possibly updated) profile picture
+  $stmt->bind_param("ssssi", $name, $email, $bio, $newProfilePicture, $userId);
+
+  // Execute the statement
+  if ($stmt->execute()) {
+    // Set session message
+    $_SESSION['notification'] = "Your profile is updated!";
+    // Redirect to profile.php after successful update
+    header("Location: profile.php");
+    exit(); // Make sure to call exit after header redirect
+  } else {
+    echo "Error updating profile: " . $stmt->error;
+  }
+
+  // Close the statement
+  $stmt->close();
+}
+
+// Close the database connection
+$conn->close();
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,13 +173,12 @@
         <!-- User Dropdown -->
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-            <img class="rounded-circle me-lg-2" src="../img/user.jpg" alt="" style="width: 40px; height: 40px;">
-            <span class="d-none d-lg-inline-flex">John Doe</span>
+            <img class="me-lg-2" src="" alt="">
+            <span class="d-none d-lg-inline-flex"><?php echo htmlspecialchars($name); ?></span>
           </a>
           <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-            <a href="userpages\index.php" class="dropdown-item">My Profile</a>
-            <a href="#" class="dropdown-item">Settings</a>
-            <a href="#" class="dropdown-item">Log Out</a>
+            <a href="../userpages/profile.php" class="dropdown-item">My Profile</a>
+            <a href="logout.php" class="dropdown-item">Log Out</a>
           </div>
         </div>
       </div>
@@ -118,12 +210,10 @@
                   unwind, explore, and discover.
                 </p>
                 <div class="d-flex flex-shrink-0">
-                  <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="../Hotel-booking-system/reservation.php">Book
-                    now</a>
+                  <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="../Aplaya/index.php">Book now</a>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -131,21 +221,116 @@
   </div>
   <!-- Carousel End -->
 
-  <!-- Calendar Start -->
   <style>
+    .fc-event-custom {
+      font-size: 12px;
+      line-height: 1.2;
+      /* Adjust line height for compact display */
+      /* Allow text to wrap */
+    }
+
+    .fc-event-custom small {
+      display: block;
+      color: #555;
+    }
+
+    /* Adjust event size for better fit */
+    .fc-event {
+      padding: 1px;
+    }
+
     #calendar {
-      height: 800px;
-      /* Adjust height as needed */
+      height: 900px;
+      /* Adjust height if necessary */
       width: 100%;
       /* Set width to 100% of the container */
     }
+
+    /* Custom calendar container styles */
+    .calendar-container {
+      background-color: #ffffff;
+      border-radius: 15px;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Add subtle shadow for better depth */
+    }
+
+    /* Responsive media queries */
+    @media (max-width: 800px) {
+      #calendar {
+        height: 700px;
+        /* Reduce height for smaller screens */
+      }
+    }
+
+    /* Container Styles */
+    .attractions {
+      background-color: #2c3e50;
+      /* Dark background to contrast with light calendar */
+      color: white;
+      /* Ensure text is legible */
+    }
+
+    .attractions-section h1,
+    .attractions-section h4 {
+      color: white;
+      /* Keep text consistent with theme */
+    }
+
+    /* Calendar Container */
+    .calendar-container {
+      background-color: #ffffff;
+      /* Light background for the calendar */
+      border-radius: 15px;
+      /* Rounded corners for modern look */
+      padding: 30px;
+      /* Add padding for spacing */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow for depth */
+    }
+
+    /* Calendar Styles */
+    #calendar {
+      height: 700px;
+      /* Adjust height based on preference */
+      width: 100%;
+    }
+
+    /* Adjust font sizes for headings inside calendar */
+    .fc-event-custom {
+      font-size: 13px;
+      white-space: normal;
+      /* Ensure text wraps */
+    }
+
+    /* Calendar responsiveness for smaller screens */
+    @media (max-width: 768px) {
+      #calendar {
+        height: 500px;
+        /* Reduce height on smaller screens */
+      }
+
+      .calendar-container {
+        padding: 20px;
+        /* Adjust padding for smaller screens */
+      }
+    }
   </style>
 
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-10 col-md-12">
-        <div class="bg-light p-4 rounded">
-          <div id="calendar"></div>
+  <!-- Calendar UI Layout -->
+  <div class="container-fluid py-5">
+    <div class="container py-5">
+      <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+        <h4 class="text-primary"></h4>
+        <h1 class="display-5 text-primary mb-4">Realtime Calender</h1>
+      </div>
+
+      <!-- Calendar Container -->
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+          <div class="calendar-container bg-light p-4 rounded shadow">
+            <div id="calendar"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -164,7 +349,7 @@
               <div class="feature-content-inner">
                 <h4 class="text-white">Special Events</h4>
                 <p class="text-white"> Whether it’s a wedding, a graduation, a birthday, or a new chapter like retirement, each special event is a reminder that life is a collection of extraordinary moments meant to be celebrated, cherished, and remembered forever.</p>
-                <a href="../userpages/reunion.php" class="btn btn-primary rounded-pill py-2 px-4">More Pictures<i class="fa fa-arrow-right ms-1"></i></a>
+                <a href="../reunion.php" class="btn btn-primary rounded-pill py-2 px-4">More Pictures<i class="fa fa-arrow-right ms-1"></i></a>
               </div>
             </div>
           </div>
@@ -216,7 +401,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="d-flex">
-                    <a href="contact.php">
+                    <a href="../contact.php">
                       <div class="me-3"><i class="fas fa-dot-circle fa-3x text-primary"></i></div>
                       <div>
                     </a>
@@ -440,7 +625,7 @@
       <div class="row g-5">
         <div class="col-md-6 col-lg-6 col-xl-4">
           <div class="footer-item">
-            <a href="index.html" class="p-0">
+            <a href="customer_dashboard.php" class="p-0">
               <h4 class="text-white mb-4"><i class="fas fa-swimmer text-primary me-3"></i>JPMAS</h4>
               <!-- <img src="img/logo.png" alt="Logo"> -->
             </a>
@@ -465,11 +650,11 @@
         <div class="col-md-6 col-lg-6 col-xl-2">
           <div class="footer-item">
             <h4 class="text-white mb-4">Quick Links</h4>
-            <a href="about.php"><i class="fas fa-angle-right me-2 "></i> About Us</a>
-            <a href="feature.php"><i class="fas fa-angle-right me-2 "></i> Feature</a>
-            <a href="attraction.php"><i class="fas fa-angle-right me-2 "></i> Attractions</a>
-            <a href="package.php"><i class="fas fa-angle-right me-2 "></i> Packages</a>
-            <a href="contact.php"><i class="fas fa-angle-right me-2 "></i> Contact us</a>
+            <a href="../about.php"><i class="fas fa-angle-right me-2 "></i> About Us</a>
+            <a href="../feature.php"><i class="fas fa-angle-right me-2 "></i> Feature</a>
+            <a href="../attraction.php"><i class="fas fa-angle-right me-2 "></i> Attractions</a>
+            <a href="../package.php"><i class="fas fa-angle-right me-2 "></i> Packages</a>
+            <a href="../contact.php"><i class="fas fa-angle-right me-2 "></i> Contact us</a>
           </div>
         </div>
         <div class="col-md-6 col-lg-6 col-xl-4">
@@ -501,7 +686,7 @@
     <div class="container">
       <div class="row g-4 align-items-center">
         <div class="col-md-6 text-center text-md-start mb-md-0">
-          <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>JPMAS</a>, All right
+          <span class="text-body"><a href="customer_dashboard.php" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>JPAMS</a>, All right
             reserved.</span>
         </div>
       </div>
@@ -553,10 +738,14 @@
               var events = [];
               $.each(response, function(index, item) {
                 events.push({
-                  title: item.title,
-                  start: item.start, // ISO8601 date format: "YYYY-MM-DDTHH:MM:SSZ"
-                  end: item.end,
-                  allDay: item.allDay // true or false
+                  title: item.title, // Title includes guest name and room type
+                  start: item.start, // Reservation start date
+                  end: item.end, // Reservation end date (optional)
+                  extendedProps: { // Pass additional data
+                    contact: item.contact, // Guest contact number
+                    status: item.status, // Reservation status
+                    transaction_id: item.transaction_id // Transaction ID
+                  }
                 });
               });
               successCallback(events);
@@ -568,16 +757,31 @@
         },
         editable: true, // Allow editing
         selectable: true, // Allow selection
-        eventClick: function(info) {
-          alert('Event: ' + info.event.title);
-          // Can add additional logic on event click
+
+        // Customize event display inside the calendar box
+        eventContent: function(info) {
+          // Create a custom HTML element to display event details
+          var customHtml = `
+                <div class="fc-event-custom">
+                    <strong>${info.event.title}</strong><br>
+                    <small>Contact: ${info.event.extendedProps.contact}</small><br>
+                    <small>Status: ${info.event.extendedProps.status}</small>
+                </div>
+            `;
+
+          // Return the HTML as a DOM element for the calendar
+          return {
+            html: customHtml
+          };
         },
-        eventColor: '#378006' // Optional: Customize event color
+
+        eventColor: '#32cd32' // Optional: Customize event color
       });
 
       calendar.render();
     });
   </script>
+
 
 
 

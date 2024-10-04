@@ -78,7 +78,7 @@ include 'header.php'
     </div>
 </div>
 <!-- Feature End -->
- 
+
 <!-- Attractions Start -->
 <div class="container-fluid attractions py-5">
     <div class="container attractions-section py-5">
@@ -813,9 +813,6 @@ include 'header.php'
 <!-- Testimonial End -->
 
 
-<?php
-include 'hicutfile\chatbot.php';
-?>
 
 <?php
 include 'footer.php'

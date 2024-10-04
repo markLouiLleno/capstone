@@ -15,6 +15,7 @@ $auth_url = $client->createAuthUrl();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,7 @@ $auth_url = $client->createAuthUrl();
         @import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         @import url("https://use.typekit.net/ngj5fjz.css");
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -126,10 +127,11 @@ $auth_url = $client->createAuthUrl();
             height: 50px;
             font-weight: 500;
         }
+
         .submit-btn:hover {
             background-color: #3e3e3e;
         }
-        
+
         .google-btn {
             font-size: 14px;
             border: none;
@@ -139,7 +141,7 @@ $auth_url = $client->createAuthUrl();
             transition: background-color 0.2s ease;
             font-weight: 400;
             background: #f9f9f9;
-            border: 1px solid rgba(0, 0,0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -182,6 +184,7 @@ $auth_url = $client->createAuthUrl();
             color: gray;
             text-align: center;
         }
+
         .redirect-text a:hover {
             text-decoration: underline !important;
             color: #3e3e3e;
@@ -222,6 +225,7 @@ $auth_url = $client->createAuthUrl();
         }
     </style>
 </head>
+
 <body>
     <div class="form-container">
         <form action="#" class="form" id="signup-form" method="POST">
@@ -235,24 +239,22 @@ $auth_url = $client->createAuthUrl();
                     <label for="first-name" class="form-label">
                         First Name
                     </label>
-                    <input 
+                    <input
                         id="first-name"
-                        name="first-name" 
+                        name="first-name"
                         placeholder="Juan"
-                        class="form-input"
-                    >
+                        class="form-input">
                     <span id="first-name-error" class="error-text"></span>
                 </div>
                 <div class="field">
                     <label for="last-name" class="form-label">
                         Last Name
                     </label>
-                    <input 
+                    <input
                         id="last-name"
-                        name="last-name" 
+                        name="last-name"
                         placeholder="Dela Cruz"
-                        class="form-input"
-                    >
+                        class="form-input">
                     <span id="last-name-error" class="error-text"></span>
                 </div>
             </div>
@@ -260,25 +262,23 @@ $auth_url = $client->createAuthUrl();
                 <label for="email" class="form-label">
                     Email
                 </label>
-                <input 
+                <input
                     id="email"
-                    name="email" 
+                    name="email"
                     placeholder="juandelacruz@example.com"
-                    class="form-input"
-                >
+                    class="form-input">
                 <span id="email-error" class="error-text"></span>
             </div>
             <div class="field">
                 <label for="password" class="form-label">
                     Password
                 </label>
-                <input 
+                <input
                     id="password"
-                    name="password" 
+                    name="password"
                     placeholder="******"
                     type="password"
-                    class="form-input"
-                >
+                    class="form-input">
                 <span id="password-error" class="error-text"></span>
             </div>
             <button class="submit-btn" type="submit">
@@ -293,7 +293,7 @@ $auth_url = $client->createAuthUrl();
             <a class="google-btn" href="<?php echo $auth_url; ?>">
                 <img width="25" height="25" src="https://th.bing.com/th/id/R.0fa3fe04edf6c0202970f2088edea9e7?rik=joOK76LOMJlBPw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fgoogle-logo-png-open-2000.png&ehk=0PJJlqaIxYmJ9eOIp9mYVPA4KwkGo5Zob552JPltDMw%3d&risl=&pid=ImgRaw&r=0" alt="Google logo">
                 Sign up with google
-    </a>
+            </a>
             <div class="redirect-text">
                 Already have an account?
                 <a href="signin.php" style="font-weight: 500; color: #333; text-decoration: none; ">Sign in</a>
@@ -301,14 +301,14 @@ $auth_url = $client->createAuthUrl();
         </form>
     </div>
     <!-- Sign Up AJAX -->
-     <!-- jQuery -->
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(() => {
 
             $('#signup-form').submit((e) => {
                 e.preventDefault();
-                
+
                 // Clear previous error
                 $('.error-text').text('').hide();
 
@@ -322,12 +322,15 @@ $auth_url = $client->createAuthUrl();
 
                 $.ajax({
                     type: 'POST',
-                    url: './php/signup.php',
+                    url: '/jpams_resort_management_system/php/signup.php',
+
                     data: formData,
                     dataType: 'json',
                     success: (response) => {
                         if (response.success) {
-                            $('.success-message').css({ display: 'flex' });
+                            $('.success-message').css({
+                                display: 'flex'
+                            });
                             $('.success-message').text('Your account has been created').show();
                             $('.error-text').text('').hide();
                             $('#signup-form')[0].reset();
@@ -344,12 +347,16 @@ $auth_url = $client->createAuthUrl();
                         });
                     },
                     error: (xhr, status, error) => {
-                        $('.error-message').css({ display: 'flex' });
+                        $('.error-message').css({
+                            display: 'flex'
+                        });
                         $('.error-message').text(xhr.responseText).show();
                     }
                 });
             });
         });
     </script>
+
 </body>
+
 </html>

@@ -1,3 +1,96 @@
+<?php
+// Check if a session is already active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include database connection
+if (!include 'db_connection.php') {
+    die("Failed to include database connection.");
+}
+
+// Get the user ID (assuming you have it; you can set it based on session or request)
+$userId = 1; // Change this as needed
+
+// Fetch user data from the database, including profile_picture
+$query = "SELECT name, email, bio, profile_picture FROM usersp WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc(); // Fetch user data as an associative array
+
+// Initialize variables to avoid undefined index warnings
+$name = isset($user['name']) ? $user['name'] : '';
+$email = isset($user['email']) ? $user['email'] : '';
+$bio = isset($user['bio']) ? $user['bio'] : '';
+$profilePicture = isset($user['profile_picture']) ? $user['profile_picture'] : 'img/user.jpg'; // Use existing profile picture
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get data from POST
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $bio = $_POST['bio'];
+
+    // Initialize a variable to hold the new profile picture path
+    $newProfilePicture = $profilePicture; // Default to existing picture
+
+    // Handle file upload
+    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
+        // File upload settings
+        $uploadDir = 'img/'; // Directory to save uploaded images
+        $uploadFile = $uploadDir . basename($_FILES['profile_picture']['name']);
+        $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+        $validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+        // Check if file is an image
+        $check = getimagesize($_FILES['profile_picture']['tmp_name']);
+        if ($check !== false && in_array($imageFileType, $validExtensions)) {
+            // Move the uploaded file to the desired directory
+            if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $uploadFile)) {
+                $newProfilePicture = $uploadFile; // Update the new profile picture path
+            } else {
+                echo "Error moving uploaded file.";
+            }
+        } else {
+            echo "File is not an image or unsupported file type.";
+        }
+    }
+
+    // Prepare the SQL update statement
+    $updateQuery = "UPDATE usersp SET name = ?, email = ?, bio = ?, profile_picture = ? WHERE id = ?";
+    $stmt = $conn->prepare($updateQuery);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    // Bind parameters, including the (possibly updated) profile picture
+    $stmt->bind_param("ssssi", $name, $email, $bio, $newProfilePicture, $userId);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        // Set session message
+        $_SESSION['notification'] = "Your profile is updated!";
+        // Redirect to profile.php after successful update
+        header("Location: profile.php");
+        exit(); // Make sure to call exit after header redirect
+    } else {
+        echo "Error updating profile: " . $stmt->error;
+    }
+
+    // Close the statement
+    $stmt->close();
+}
+
+// Close the database connection
+$conn->close();
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +150,8 @@
     <link href="../dashboard/css/style.css" rel="stylesheet">
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
 
 </head>
@@ -74,7 +169,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-2">
             <nav class="navbar bg-light navbar-light">
-                <a href="views/customer_dashboard.php" class="navbar-brand mx-4 mb-3"><img src="/jpams/img/JPAMS LOGO.png" height="80px" alt="Logo" loading="lazy" />
+                <a href="../views/customer_dashboard.php" class="navbar-brand mx-4 mb-3"><img src="/jpams/img/JPAMS LOGO.png" height="80px" alt="Logo" loading="lazy" />
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -89,12 +184,6 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="Hotel-booking-system/reservation.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Book</a>
-                    <a href="calendar.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Calendar</a>
-                    <a href="chat.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Chat</a>
-                    <a href="gallery.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Gallery</a>
-                    <a href="widget.php" class="nav-item nav-link "><i class="fa fa-street-view me-2"></i>Widget</a>
-                    <a href="chart.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Help</a>
                 </div>
             </nav>
         </div>
@@ -177,18 +266,16 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
                                 style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex"><?php echo htmlspecialchars($name); ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="info.php" class="dropdown-item">Settings</a>
+                            <a href="../views/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
             </nav>
             <!-- Navbar End -->
-
 
 
             <div class="container-fluid pt-4 px-4">
@@ -199,48 +286,31 @@
                             <div class="card-body">
                                 <!-- Profile Picture -->
                                 <div class="mb-3">
-                                    <img src="img/user.jpg" alt="Profile Picture" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
+                                    <img src="<?php echo htmlspecialchars($profilePicture); ?>" alt="Profile Picture" class="rounded-circle mb-3" style="width: 100px; height: 100px;">
                                 </div>
 
                                 <!-- Username -->
                                 <h6 class="card-title mt-3">Username</h6>
-                                <p class="card-text">John Doe</p>
+                                <p class="card-text"><?php echo htmlspecialchars($name); ?></p>
 
                                 <!-- Email Address -->
                                 <h6 class="card-title mt-3">Email Address</h6>
-                                <p class="card-text">john.doe@example.com</p>
+                                <p class="card-text"><?php echo htmlspecialchars($email); ?></p>
 
                                 <!-- Additional Information -->
                                 <h6 class="card-title mt-3">Info</h6>
-                                <p class="card-text">Additional information can go here...</p>
+                                <p class="card-text"><?php echo htmlspecialchars($bio); ?></p>
 
                                 <!-- Rating -->
                                 <h6 class="card-title mt-3">Rating</h6>
-                                <div>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Ongoing Booking Container -->
-                    <div class="col-md-6 mb-3">
-                        <div class="card bg-light text-center rounded p-4">
-                            <div class="card-body">
-                                <h6 class="card-title">Ongoing Booking</h6>
-                                <p class="card-text">Booking ID: BK-2045</p>
-                                <p class="card-text">Date: 01 Jan 2045</p>
-                                <p class="card-text">Service: Premium Car Wash</p>
-                                <p class="card-text">Status: In Progress</p>
+                                <p class="card-text">⭐⭐⭐⭐⭐</p> <!-- Add dynamic rating logic if necessary -->
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
@@ -254,11 +324,11 @@
                                 <tr class="text-dark">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
+                                    <th scope="col">Comfirmation Code</th>
                                     <th scope="col">Customer</th>
                                     <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Remaining Balance</th>
+                                    <th scope="col">Request</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -266,46 +336,46 @@
                                     <td><input class="form-check-input" type="checkbox"></td>
                                     <td>01 Jan 2045</td>
                                     <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
+                                    <td>Birthday</td>
+                                    <td>1800</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Request</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Cancel</a></td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
                                     <td>01 Jan 2045</td>
                                     <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
+                                    <td>Birthday</td>
+                                    <td>1800</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Request</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Cancel</a></td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
                                     <td>01 Jan 2045</td>
                                     <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
+                                    <td>Birthday</td>
+                                    <td>1800</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Request</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Cancel</a></td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
                                     <td>01 Jan 2045</td>
                                     <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
+                                    <td>Birthday</td>
+                                    <td>1800</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Request</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Cancel</a></td>
                                 </tr>
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
                                     <td>01 Jan 2045</td>
                                     <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
+                                    <td>Birthday</td>
+                                    <td>1800</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Request</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Cancel</a></td>
                                 </tr>
                             </tbody>
                         </table>

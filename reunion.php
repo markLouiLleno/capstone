@@ -20,71 +20,71 @@ include 'header.php' ?>
         <div class="owl-carousel attractions-carousel wow fadeInUp" data-wow-delay="0.1s">
             <div class="attractions-item wow fadeInUp" data-wow-delay="0.2s">
                 <img src="img\picture\renuion\re (1).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (1).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (1).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="0.4s">
                 <img src="img\picture\renuion\re (2).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (2).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (2).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="0.6s">
                 <img src="img\picture\renuion\re (3).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (3).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (3).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="0.8s">
                 <img src="img\picture\renuion\re (4).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (4).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (4).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\renuion\re (5).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (5).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (5).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\renuion\re (10).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (10).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (10).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\renuion\re (7).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (7).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (7).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\renuion\re (8).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (8).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (8).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\renuion\re (9).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\renuion\re (9).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\renuion\re (9).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Renuion</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="0.2s">
                 <img src="img\picture\birtday\birth (1).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\birtday\birth (1).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\birtday\birth (1).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Birthday</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="0.4s">
                 <img src="img\picture\birtday\birth (2).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\birtday\birth (2).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\birtday\birth (2).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Birthday</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="0.6s">
                 <img src="img\picture\birtday\birth (9).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\birtday\birth (9).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\birtday\birth (9).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Birthday</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="0.8s">
                 <img src="img\picture\birtday\birth (4).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\birtday\birth (4).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\birtday\birth (4).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Birthday</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\birtday\birth (5).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\birtday\birth (5).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\birtday\birth (5).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Birthday</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\birtday\birth (8).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\birtday\birth (8).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\birtday\birth (8).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Birthday</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\birtday\birth (6).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\birtday\birth (6).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\birtday\birth (6).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Birthday</a>
             </div>
             <div class="attractions-item wow fadeInUp" data-wow-delay="1s">
                 <img src="img\picture\birtday\birth (7).jpg" class="img-fluid rounded w-100" alt="">
-                <a href="img\picture\birtday\birth (7).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1"></a>
+                <a href="img\picture\birtday\birth (7).jpg" class="attractions-name" class="btn btn-light btn-lg-square rounded-circle" data-lightbox="Gallery-1">Birthday</a>
             </div>
         </div>
     </div>
