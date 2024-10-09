@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Description:	This is a class for member.
- * Author:		Joken Villanueva
- * Date Created:	Nov. 2, 2013
- * Revised By:		
- */
+
 require_once(__DIR__ . '/database.php');
 
 class User

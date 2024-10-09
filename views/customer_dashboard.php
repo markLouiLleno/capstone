@@ -154,13 +154,13 @@ $conn->close();
             <a href="customer_dashboard.php" class="nav-link active">Home</a>
           </li>
           <li class="nav-item">
-            <a href="../userpages/about.php" class="nav-link">About</a>
+            <a href="../userpages/contact.php" class="nav-link">Contact us</a>
           </li>
           <li class="nav-item">
             <a href="../userpages/package.php" class="nav-link">Services</a>
           </li>
           <li class="nav-item">
-            <a href="../userpages/contact.php" class="nav-link">Contact</a>
+            <a href="../userpages/about.php" class="nav-link">About us</a>
           </li>
         </ul>
         <!-- Social Icons -->

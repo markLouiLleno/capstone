@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root"; // Adjust if needed
 $password = ""; // Adjust if needed
-$database = "db"; // Set your actual database name
+$database = "aplayadb"; // Set your actual database name
 
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $database);

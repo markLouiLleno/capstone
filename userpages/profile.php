@@ -169,7 +169,7 @@ $conn->close();
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-2">
             <nav class="navbar bg-light navbar-light">
-                <a href="../views/customer_dashboard.php" class="navbar-brand mx-4 mb-3"><img src="/jpams/img/JPAMS LOGO.png" height="80px" alt="Logo" loading="lazy" />
+                <a href="../views/customer_dashboard.php" class="navbar-brand mx-4 mb-3"><img src="../img/JPAMS LOGO.png" height="80px" alt="Logo" loading="lazy" />
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -269,7 +269,7 @@ $conn->close();
                             <span class="d-none d-lg-inline-flex"><?php echo htmlspecialchars($name); ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="info.php" class="dropdown-item">Settings</a>
+                            <a href="info.php" class="dropdown-item">Edit Profile</a>
                             <a href="../views/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
@@ -300,11 +300,6 @@ $conn->close();
                                 <!-- Additional Information -->
                                 <h6 class="card-title mt-3">Info</h6>
                                 <p class="card-text"><?php echo htmlspecialchars($bio); ?></p>
-
-                                <!-- Rating -->
-                                <h6 class="card-title mt-3">Rating</h6>
-                                <p class="card-text">⭐⭐⭐⭐⭐</p> <!-- Add dynamic rating logic if necessary -->
-
 
                             </div>
                         </div>
