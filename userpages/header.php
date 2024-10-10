@@ -1,13 +1,105 @@
+<?php
+// Check if a session is already active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include database connection
+if (!include '../userpages/db_connection.php') {
+    die("Failed to include database connection.");
+}
+
+// Get the user ID (assuming you have it; you can set it based on session or request)
+$userId = 1; // Change this as needed
+
+// Fetch user data from the database, including profile_picture
+$query = "SELECT name, email, bio, profile_picture FROM usersp WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc(); // Fetch user data as an associative array
+
+// Initialize variables to avoid undefined index warnings
+$name = isset($user['name']) ? $user['name'] : '';
+$email = isset($user['email']) ? $user['email'] : '';
+$bio = isset($user['bio']) ? $user['bio'] : '';
+$profilePicture = isset($user['profile_picture']) ? $user['profile_picture'] : 'img/user.jpg'; // Use existing profile picture
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get data from POST
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $bio = $_POST['bio'];
+
+    // Initialize a variable to hold the new profile picture path
+    $newProfilePicture = $profilePicture; // Default to existing picture
+
+    // Handle file upload
+    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
+        // File upload settings
+        $uploadDir = 'img/'; // Directory to save uploaded images
+        $uploadFile = $uploadDir . basename($_FILES['profile_picture']['name']);
+        $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
+        $validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+        // Check if file is an image
+        $check = getimagesize($_FILES['profile_picture']['tmp_name']);
+        if ($check !== false && in_array($imageFileType, $validExtensions)) {
+            // Move the uploaded file to the desired directory
+            if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $uploadFile)) {
+                $newProfilePicture = $uploadFile; // Update the new profile picture path
+            } else {
+                echo "Error moving uploaded file.";
+            }
+        } else {
+            echo "File is not an image or unsupported file type.";
+        }
+    }
+
+    // Prepare the SQL update statement
+    $updateQuery = "UPDATE usersp SET name = ?, email = ?, bio = ?, profile_picture = ? WHERE id = ?";
+    $stmt = $conn->prepare($updateQuery);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    // Bind parameters, including the (possibly updated) profile picture
+    $stmt->bind_param("ssssi", $name, $email, $bio, $newProfilePicture, $userId);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        // Set session message
+        $_SESSION['notification'] = "Your profile is updated!";
+        // Redirect to profile.php after successful update
+        header("Location: profile.php");
+        exit(); // Make sure to call exit after header redirect
+    } else {
+        echo "Error updating profile: " . $stmt->error;
+    }
+
+    // Close the statement
+    $stmt->close();
+}
+
+// Close the database connection
+$conn->close();
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Hotel Online Reservation</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-
+    <meta charset="utf-8">
+    <title>JPAMS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis .com">
@@ -27,6 +119,8 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Template Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet">
 
 
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css" rel="stylesheet">
@@ -34,6 +128,7 @@
 </head>
 
 <body>
+
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -56,16 +151,16 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mx-auto py-0">
                     <li class="nav-item">
-                        <a href="../views/customer_dashboard.php" class="nav-link active">Home</a>
+                        <a href="customer_dashboard.php" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../userpages/contact.php" class="nav-link">About</a>
+                        <a href="../userpages/contact.php" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a href="../userpages/package.php" class="nav-link">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../userpages/contact.php" class="nav-link">Contact</a>
+                        <a href="../userpages/about.php" class="nav-link">About</a>
                     </li>
                 </ul>
                 <!-- Social Icons -->
@@ -78,13 +173,12 @@
                 <!-- User Dropdown -->
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <img class="rounded-circle me-lg-2" src="../img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <span class="d-none d-lg-inline-flex">John Doe</span>
+                        <img class="me-lg-2" src="" alt="">
+                        <span class="d-none d-lg-inline-flex"><?php echo htmlspecialchars($name); ?></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                         <a href="../userpages/profile.php" class="dropdown-item">My Profile</a>
-                        <a href="#" class="dropdown-item">Settings</a>
-                        <a href="#" class="dropdown-item">Log Out</a>
+                        <a href="logout.php" class="dropdown-item">Log Out</a>
                     </div>
                 </div>
             </div>
