@@ -43,17 +43,17 @@ if (isset($_POST['btnsubmitbooking'])) {
   }
   $confirmation = createRandomPassword();
   $_SESSION['confirmation'] = $confirmation;
-  //    $count_cart = count($_SESSION['magbanua_cart']);
+  $count_cart = count($_SESSION['magbanua_cart']);
 
-  //   for ($i=0; $i < $count_cart  ; $i++) {     
-  //   $mydb->setQuery("SELECT * FROM room where roomNo=". $_SESSION['magbanua_cart'][$i]['magbanuaroomid']);
-  //   $rmprice = $mydb->executeQuery();
-  //   while($row = mysql_fetch_assoc($rmprice)){
-  //     $rate = $row['price']; 
-  //   }  
-  // }
-  //   $payable= $rate*$days;
-  //   $_SESSION['pay']= $payable;
+  for ($i = 0; $i < $count_cart; $i++) {
+    $mydb->setQuery("SELECT * FROM room where roomNo=" . $_SESSION['magbanua_cart'][$i]['magbanuaroomid']);
+    $rmprice = $mydb->executeQuery();
+    while ($row = mysql_fetch_assoc($rmprice)) {
+      $rate = $row['price'];
+    }
+  }
+  $payable = $rate * $days;
+  $_SESSION['pay'] = $payable;
 
   //check guest
 
@@ -184,12 +184,13 @@ if (isset($_POST['btnsubmitbooking'])) {
                       </td>
                     </tr>
                     <tr>
-                      <!--  <td colspan="4"></td><td colspan="5">
-                            <div class="col-xs-12 col-sm-12" align="right">
-                                <button type="submit" class="btn btn-inverse" align="right" name="btnlogin">Payout</button>
-                            </div>
-                   
-                     </td> -->
+                      <td colspan="4"></td>
+                      <td colspan="5">
+                        <div class="col-xs-12 col-sm-12" align="right">
+                          <button type="submit" class="btn btn-inverse" align="right" name="btnlogin">Payout</button>
+                        </div>
+
+                      </td> -->
                     </tr>
 
                   </tfoot>
