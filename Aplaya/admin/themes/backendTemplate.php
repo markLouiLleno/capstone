@@ -27,43 +27,43 @@
 	//execute if all html elemen has been completely loaded
 	$(document).ready(function() {
 
-		//specify class name of a specific element. click event listener--
-		$('.cls_btn').click(function() {
-			//access the id of the specific element that has been click	
-			var id = $(this).attr('id');
-			//to debug every value of element,variable, object ect...
-			console.log($(this).attr('id'));
+				//specify class name of a specific element. click event listener--
+				$('.cls_btn').click(function() {
+					//access the id of the specific element that has been click	
+					var id = $(this).attr('id');
+					//to debug every value of element,variable, object ect...
+					console.log($(this).attr('id'));
 
-			//execute a php file without reloading the page and manipulate the php responce data
-			$.ajax({
+					//execute a php file without reloading the page and manipulate the php responce data
+					$.ajax({
 
-				type: "POST",
-				//the php file that contain a mysql query
-				url: "some.php",
-				//submit parameter
-				data: {
-					id: id,
-					name: 'kevin'
-				}
-			})
-			//.done means will execute if the php file has done all the processing(ex: query)
-			// .done(function( msg ) {
-			// 	//decode JSON from PHP file response
-			// 	var result = JSON.parse(msg);
+							type: "POST",
+							//the php file that contain a mysql query
+							url: "some.php",
+							//submit parameter
+							data: {
+								id: id,
+								name: 'kevin'
+							}
+						})
+						//.done means will execute if the php file has done all the processing(ex: query)
+						.done(function(msg) {
+							//decode JSON from PHP file response
+							var result = JSON.parse(msg);
 
-			// 	console.log(this);
+							// 	console.log(this);
 
-			// 	//apply the value to each element
-			//   $('#display #infoid').html(result[0].member_id);
-			//   $('#display #infoname').html(result[0].fName+" "+result[0].lName);
-			//   $('#display #Email').html(result[0].email);
-			//   $('#display #Gender').html(result[0].gender);
-			//   $('#display #bday').html(result[0].bday);
-			//     });
+							// 	//apply the value to each element
+							//   $('#display #infoid').html(result[0].member_id);
+							//   $('#display #infoname').html(result[0].fName+" "+result[0].lName);
+							//   $('#display #Email').html(result[0].email);
+							//   $('#display #Gender').html(result[0].gender);
+							//   $('#display #bday').html(result[0].bday);
+							//     });
 
-		});
+						});
 
-	});
+				});
 </script>
 <script type="text/javascript" charset="utf-8">
 	$(document).on("click", ".get-id", function() {
@@ -126,8 +126,8 @@
 				"targets": 0
 			}],
 			//vertical scroll
-			// "scrollY":        "300px",
-			// "scrollCollapse": true,
+			"scrollY": "300px",
+			"scrollCollapse": true,
 			//ordering start at column 2
 			"order": [
 				[7, 'desc']
@@ -147,8 +147,8 @@
 <link href="<?php echo WEB_ROOT; ?>admin/css/offcanvas.css" rel="stylesheet">
 <?php
 
-/*define('ADMIN_INDEX_PATH', $_SERVER['SERVER_NAME']);
-define( 'SEP', DIRECTORY_SEPARATOR );*/
+//define('ADMIN_INDEX_PATH', $_SERVER['SERVER_NAME']);
+//define('SEP', DIRECTORY_SEPARATOR);
 
 admin_logged_in();
 ?>
@@ -184,22 +184,22 @@ admin_logged_in();
 			</div><!-- /.nav-collapse -->
 		</div><!-- /.container -->
 	</div><!-- /.navbar -->
-	<!--
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="well">-->
-	<!-- <img  width="1100px" hieght="100px" class="img-rounded"/> -->
-	<!--	<div class="media">
-			  <a class="pull-left" href="#">
-			    <img class="media-object" src="../img/banner.png" alt="...">
-			  </a>
-			</div>
+				<div class="well">
+					<img width="1100px" hieght="100px" class="img-rounded" />
+					<div class="media">
+						<a class="pull-left" href="#">
+							<img class="media-object" src="../img/banner.png" alt="...">
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
 
--->
+
 	</div>
 
 	<!--End of Header-->
@@ -217,36 +217,72 @@ admin_logged_in();
 			<script>
 				// Function to check/uncheck all checkboxes
 				function checkall(selector) {
-					var chkelement = document.getElementsByName(selector);
-					var isChecked = document.getElementById('chkall').checked;
+					const chkelement = document.getElementsByName(selector);
+					const isChecked = document.getElementById('chkall').checked;
 
-					for (var i = 0; i < chkelement.length; i++) {
-						chkelement[i].checked = isChecked;
-					}
+					chkelement.forEach((element) => {
+						element.checked = isChecked;
+					});
 				}
 
 				// Function to allow only numeric values in a text box
 				function checkNumber(textBox) {
-					while (textBox.value.length > 0 && isNaN(textBox.value)) {
-						textBox.value = textBox.value.substring(0, textBox.value.length - 1);
-					}
-					textBox.value = trim(textBox.value);
+					textBox.value = textBox.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
 				}
 
 				// Function to allow only alphabetic values in a text box
 				function checkText(textBox) {
-					var alphaExp = /^[a-zA-Z]+$/;
-					while (textBox.value.length > 0 && !textBox.value.match(alphaExp)) {
-						textBox.value = textBox.value.substring(0, textBox.value.length - 1);
-					}
-					textBox.value = trim(textBox.value);
+					textBox.value = textBox.value.replace(/[^a-zA-Z]/g, ''); // Remove non-alphabetic characters
 				}
 
 				// Helper function to trim whitespace from a string
 				function trim(str) {
-					return str.replace(/^\s+|\s+$/g, '');
+					return str.trim(); // Use the built-in trim method
 				}
+
+				// Add event listeners on DOMContentLoaded
+				document.addEventListener('DOMContentLoaded', function() {
+					const numericInputs = document.querySelectorAll('.numeric');
+					const textInputs = document.querySelectorAll('.alphabetic');
+
+					// Attach the checkNumber function to all numeric inputs
+					numericInputs.forEach((input) => {
+						input.addEventListener('input', function() {
+							checkNumber(this);
+						});
+					});
+
+					// Attach the checkText function to all alphabetic inputs
+					textInputs.forEach((input) => {
+						input.addEventListener('input', function() {
+							checkText(this);
+						});
+					});
+				});
 			</script>
+			<script type="text/javascript">
+				$('.start').datetimepicker({
+					language: 'en',
+					weekStart: 1,
+					todayBtn: 1,
+					autoclose: 1,
+					todayHighlight: 1,
+					startView: 2,
+					minView: 2,
+					forceParse: 0
+				});
+				$('.end').datetimepicker({
+					language: 'en',
+					weekStart: 1,
+					todayBtn: 1,
+					autoclose: 1,
+					todayHighlight: 1,
+					startView: 2,
+					minView: 2,
+					forceParse: 0
+				});
+			</script>
+
 
 		</footer>
 	</div>
@@ -254,25 +290,3 @@ admin_logged_in();
 </body>
 
 </html>
-<script type="text/javascript">
-	$('.start').datetimepicker({
-		language: 'en',
-		weekStart: 1,
-		todayBtn: 1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: 2,
-		forceParse: 0
-	});
-	$('.end').datetimepicker({
-		language: 'en',
-		weekStart: 1,
-		todayBtn: 1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: 2,
-		forceParse: 0
-	});
-</script>

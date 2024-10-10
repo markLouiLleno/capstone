@@ -724,63 +724,98 @@ $conn->close();
   <!-- JavaScript Libraries -->
 
 
-  <!-- FullCalendar Initialization -->
   <script>
     $(document).ready(function() {
       var calendarEl = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth', // Can change to 'timeGridWeek', 'timeGridDay', etc.
+        initialView: 'dayGridMonth', // Default view
+
+        // Fetch events from the server
         events: function(fetchInfo, successCallback, failureCallback) {
           $.ajax({
-            url: 'fetch-events.php', // The PHP file where events are fetched from the server
+            url: 'fetch-events.php', // PHP file to fetch the events
             dataType: 'json',
             success: function(response) {
               var events = [];
+              // Process each event from the response
               $.each(response, function(index, item) {
                 events.push({
-                  title: item.title, // Title includes guest name and room type
-                  start: item.start, // Reservation start date
-                  end: item.end, // Reservation end date (optional)
-                  extendedProps: { // Pass additional data
-                    contact: item.contact, // Guest contact number
-                    status: item.status, // Reservation status
-                    transaction_id: item.transaction_id // Transaction ID
+                  title: item.title, // Title: Room number
+                  start: item.start, // Arrival date
+                  end: item.end, // Departure date (optional)
+                  extendedProps: { // Additional data
+                    guest_id: item.extendedProps.guest_id, // Guest ID
+                    status: item.extendedProps.status, // Reservation status
+                    confirmation: item.extendedProps.confirmation, // Confirmation code
+                    reservation_id: item.extendedProps.reservation_id // Reservation ID
                   }
                 });
               });
-              successCallback(events);
+              successCallback(events); // Return events to FullCalendar
             },
             error: function() {
-              failureCallback();
+              failureCallback(); // Handle errors
             }
           });
         },
+
         editable: true, // Allow editing
         selectable: true, // Allow selection
 
-        // Customize event display inside the calendar box
+        // Customize event display
         eventContent: function(info) {
-          // Create a custom HTML element to display event details
+          // Create custom HTML for the event
           var customHtml = `
                 <div class="fc-event-custom">
                     <strong>${info.event.title}</strong><br>
-                    <small>Contact: ${info.event.extendedProps.contact}</small><br>
-                    <small>Status: ${info.event.extendedProps.status}</small>
+                    <small>Guest ID: ${info.event.extendedProps.guest_id}</small><br>
+                    <small>Status: ${info.event.extendedProps.status}</small><br>
+                    <small>Confirmation: ${info.event.extendedProps.confirmation}</small>
                 </div>
             `;
-
-          // Return the HTML as a DOM element for the calendar
+          // Return the custom HTML to be displayed
           return {
             html: customHtml
           };
         },
 
-        eventColor: '#32cd32' // Optional: Customize event color
+        eventColor: '#32cd32' // Customize event color
       });
 
       calendar.render();
     });
   </script>
+  <style>
+    /* Customize the size of the event box */
+    .fc-event-custom {
+      font-size: 10px;
+      /* Reduce font size */
+      padding: 2px;
+      /* Reduce padding */
+      margin: 2px;
+      /* Reduce margin */
+    }
+
+    .fc-daygrid-event {
+      white-space: normal;
+      /* Ensure the event text wraps */
+      padding: 3px;
+      /* Adjust padding for each event block */
+    }
+
+    /* Customize the size of the event title */
+    .fc-event-custom strong {
+      font-size: 12px;
+      /* Slightly larger font for the title */
+    }
+
+    /* Customize other small text within the event */
+    .fc-event-custom small {
+      font-size: 9px;
+      /* Make additional info smaller */
+    }
+  </style>
+
 
 
 
