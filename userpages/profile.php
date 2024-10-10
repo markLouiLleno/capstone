@@ -182,11 +182,14 @@ $conn->close();
                         <h6 class="mb-0">Jpams</h6>
                         <span>User</span>
                     </div>
+                    
                 </div>
+                <a href="../views/customer_chat.php" class="nav-item nav-link"><i class="fas fa-comments"></i>Chat</a>
                 <div class="navbar-nav w-100">
                 </div>
             </nav>
         </div>
+        
         <!-- Sidebar End -->
 
         <!-- Content Start -->

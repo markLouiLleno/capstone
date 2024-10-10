@@ -66,7 +66,7 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="../Aplaya/admin/mod_reservation/index.php" class="dropdown-item">Guest Details</a>
                             <a href="typography.php" class="dropdown-item">Special Requests</a>
-                            <a href="typography.php" class="dropdown-item">Chat</a>
+                            <a href="../views/admin_chat.php" class="dropdown-item">Chat</a>
                             <a href="element.php" class="dropdown-item">Customers Feedback</a>
                         </div>
                     </div>

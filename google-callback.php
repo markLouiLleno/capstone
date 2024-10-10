@@ -36,6 +36,7 @@ if (isset($_GET['code'])) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_email'] = $user['email'];
                 $_SESSION['user_type'] = $user['user_type'];
+                $_SESSION['is_logged_in'] = true;
 
                 // Redirect based on user type
                 if ($user['user_type'] == 'admin') {
@@ -65,6 +66,7 @@ if (isset($_GET['code'])) {
                             $_SESSION['user_id'] = $user['id'];
                             $_SESSION['user_email'] = $user['email'];
                             $_SESSION['user_type'] = $user['user_type'];
+                            $_SESSION['is_logged_in'] = true;
 
                             // Redirect based on user type
                             if ($user['user_type'] == 'admin') {
@@ -95,6 +97,7 @@ if (isset($_GET['code'])) {
                         $_SESSION['user_id'] = $newUserId;
                         $_SESSION['user_email'] = $email;
                         $_SESSION['user_type'] = $defaultUserType;
+                        $_SESSION['is_logged_in'] = true;
 
                         // Redirect based on user type (default is customer)
                         header('Location: views/customer_dashboard.php');

@@ -149,6 +149,12 @@ h<!-- Footer Start -->
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+
+
+<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2024/10/04/23/20241004234037-1TGK0QAH.js"></script>
+    
+    
 </body>
 
 </html>
