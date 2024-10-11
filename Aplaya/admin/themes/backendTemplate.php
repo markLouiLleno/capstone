@@ -214,79 +214,13 @@ admin_logged_in();
 		<footer>
 			<p>&copy; JPAMS </p>
 
+
 			<script>
-				// Function to check/uncheck all checkboxes
-				function checkall(selector) {
-<<<<<<< HEAD
-					var chkelement = document.getElementsByName(selector);
-					var isChecked = document.getElementById('chkall').checked;
-
-					for (var i = 0; i < chkelement.length; i++) {
-						chkelement[i].checked = isChecked;
-					}
-=======
-					const chkelement = document.getElementsByName(selector);
-					const isChecked = document.getElementById('chkall').checked;
-
-					chkelement.forEach((element) => {
-						element.checked = isChecked;
-					});
->>>>>>> a75a3b9d2b3a5bdfa565eb42a7ec76444cfc8f04
-				}
-
-				// Function to allow only numeric values in a text box
-				function checkNumber(textBox) {
-<<<<<<< HEAD
-					while (textBox.value.length > 0 && isNaN(textBox.value)) {
-						textBox.value = textBox.value.substring(0, textBox.value.length - 1);
-					}
-					textBox.value = trim(textBox.value);
-=======
-					textBox.value = textBox.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
->>>>>>> a75a3b9d2b3a5bdfa565eb42a7ec76444cfc8f04
-				}
-
-				// Function to allow only alphabetic values in a text box
-				function checkText(textBox) {
-<<<<<<< HEAD
-					var alphaExp = /^[a-zA-Z]+$/;
-					while (textBox.value.length > 0 && !textBox.value.match(alphaExp)) {
-						textBox.value = textBox.value.substring(0, textBox.value.length - 1);
-					}
-					textBox.value = trim(textBox.value);
-=======
-					textBox.value = textBox.value.replace(/[^a-zA-Z]/g, ''); // Remove non-alphabetic characters
->>>>>>> a75a3b9d2b3a5bdfa565eb42a7ec76444cfc8f04
-				}
-
-				// Helper function to trim whitespace from a string
-				function trim(str) {
-<<<<<<< HEAD
-					return str.replace(/^\s+|\s+$/g, '');
-				}
-			</script>
-=======
-					return str.trim(); // Use the built-in trim method
-				}
-
-				// Add event listeners on DOMContentLoaded
-				document.addEventListener('DOMContentLoaded', function() {
-					const numericInputs = document.querySelectorAll('.numeric');
-					const textInputs = document.querySelectorAll('.alphabetic');
-
-					// Attach the checkNumber function to all numeric inputs
-					numericInputs.forEach((input) => {
-						input.addEventListener('input', function() {
-							checkNumber(this);
-						});
-					});
-
-					// Attach the checkText function to all alphabetic inputs
-					textInputs.forEach((input) => {
-						input.addEventListener('input', function() {
-							checkText(this);
-						});
-					});
+				textInputs.forEach((input) => {
+				input.addEventListener('input', function() {
+					checkText(this);
+				});
+				});
 				});
 			</script>
 			<script type="text/javascript">
@@ -311,8 +245,6 @@ admin_logged_in();
 					forceParse: 0
 				});
 			</script>
-
->>>>>>> a75a3b9d2b3a5bdfa565eb42a7ec76444cfc8f04
 
 		</footer>
 	</div>

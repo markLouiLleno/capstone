@@ -1,10 +1,7 @@
 <?php
-<<<<<<< HEAD
-require_once("`../../../includes/initialize.php");
-=======
-require_once('../../includes/initialize.php');
 
->>>>>>> a75a3b9d2b3a5bdfa565eb42a7ec76444cfc8f04
+require_once("../../includes/initialize.php");
+
 $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
 
 switch ($action) {

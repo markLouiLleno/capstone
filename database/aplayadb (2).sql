@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2024 at 04:55 PM
+-- Generation Time: Oct 11, 2024 at 01:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -92,7 +92,17 @@ INSERT INTO `comments` (`comment_id`, `firstname`, `lastname`, `email`, `comment
 (30, '', '', '', '                '),
 (31, 'asd', 'asd', 'qweqwe@Hicut.com', 'jjlklkj'),
 (32, 'asd', 'asd', 'qweqwe@Hicut.com', 'jhasdghajghda'),
-(33, 'asd', 'asd', 'qweqwe@Hicut.com', '123123');
+(33, 'asd', 'asd', 'qweqwe@Hicut.com', '123123'),
+(34, 'asd', 'asd', 'qweqwe@Hicut.com', 'huhhhh'),
+(35, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', 'asdwasd'),
+(36, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', 'qweqwe'),
+(37, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', '                '),
+(38, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', '                '),
+(39, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', 'asdasda'),
+(40, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', '                '),
+(41, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', '                '),
+(42, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', '                '),
+(43, 'Christina Diane', 'Lleno', 'c.dianelleno@gmail.com', '                ');
 
 -- --------------------------------------------------------
 
@@ -143,7 +153,22 @@ INSERT INTO `guest` (`guest_id`, `firstname`, `lastname`, `country`, `city`, `ad
 (41, 'jo', 'jk', 'jk', 'jk', 'jkl', '911', '0975765', 'jeanniebenillos@gmail.com', 'a'),
 (42, 'sad', 'sad', 'sda', 'sda', 'dsa', '611', '213123123', 'j@yahoo.com', 'jjj'),
 (43, 'asd', 'asd', '', 'San Jose Del Monte', 'asd', '3026', '1234567811', 'a@gmail.com', ''),
-(44, 'asd', 'asd', '', 'aaaa', 'aaa', 'aaa', '1222222222', 'qweqwe@Hicut.com', '');
+(44, 'asd', 'asd', '', 'aaaa', 'aaa', 'aaa', '1222222222', 'qweqwe@Hicut.com', ''),
+(45, 'Christina Diane', 'Lleno', '', 'San Jose Del Monte', 'Block 6 Lot 3 Ilang-ilang Stre', '3026', '9234034439', 'c.dianelleno@gmail.com', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `sender_id` int(11) DEFAULT NULL,
+  `recipient_id` int(11) DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -259,39 +284,11 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`reservation_id`, `roomNo`, `guest_id`, `arrival`, `departure`, `adults`, `child`, `payable`, `status`, `booked`, `confirmation`) VALUES
-(1, 2, 25, '2014-03-27', '2014-03-28', 1, 0, 0, 'Checkedout', '0000-00-00', 'aa7o45qb'),
-(2, 2, 25, '2014-03-27', '2014-03-28', 1, 0, 1500, 'Checkedout', '0000-00-00', 'pokoozoh'),
-(3, 2, 25, '2014-03-27', '2014-03-28', 1, 0, 1500, 'Checkedout', '0000-00-00', 'p47gcsir'),
-(7, 3, 33, '2014-04-06', '2014-04-07', 1, 0, 1800, 'Checkedin', '0000-00-00', 'tf3mbva3'),
-(8, 3, 33, '2014-04-06', '2014-04-07', 1, 0, 1800, 'Checkedin', '0000-00-00', 'j3t6o8my'),
-(9, 2, 34, '2014-03-06', '2014-03-07', 1, 0, 1500, 'Checkedout', '0000-00-00', 'zn63hw63'),
-(10, 3, 35, '2014-03-29', '2014-03-30', 1, 0, 1800, 'Checkedin', '0000-00-00', 'v7t0o6rp'),
-(11, 8, 36, '2014-03-28', '2014-03-31', 1, 0, 3900, 'Checkedin', '0000-00-00', 't6urn8t3'),
-(12, 2, 22, '2014-03-08', '2014-03-09', 1, 0, 1500, 'Checkedout', '0000-00-00', 'czt277mm'),
-(13, 3, 36, '2014-03-08', '2014-03-09', 1, 0, 1800, 'Checkedin', '0000-00-00', 'hnq6tgs5'),
-(14, 9, 35, '2014-03-22', '2014-03-23', 1, 0, 2300, 'Cancelled', '0000-00-00', 'ayupzknr'),
-(15, 2, 37, '2014-03-13', '2014-03-14', 1, 0, 1500, 'Checkedin', '0000-00-00', 'chn8qjta'),
-(16, 3, 38, '2014-03-13', '2014-03-14', 1, 0, 1800, 'Checkedout', '0000-00-00', 'krfitp0k'),
-(17, 3, 36, '2014-03-24', '2014-03-28', 1, 0, 7200, 'Checkedin', '0000-00-00', 'um8a30sq'),
-(18, 2, 35, '2014-03-18', '2014-03-19', 1, 0, 1500, 'Cancelled', '0000-00-00', '803rk3h0'),
-(19, 2, 36, '2014-03-18', '2014-03-19', 1, 0, 1500, 'Checkedout', '0000-00-00', 'x4dfc70f'),
-(20, 2, 39, '2014-03-13', '2014-03-22', 1, 0, 13500, 'Checkedout', '0000-00-00', '4yd2io0y'),
-(21, 2, 40, '2014-09-13', '2014-09-21', 1, 0, 12000, 'Checkedin', '0000-00-00', '88tvf0yi'),
-(22, 2, 41, '2014-11-19', '2014-11-20', 1, 0, 1500, 'Checkedout', '0000-00-00', 'tqn5vhre'),
-(23, 3, 41, '2014-11-19', '2015-01-07', 1, 0, 88200, 'Checkedin', '0000-00-00', 'tzobxftd'),
-(24, 5, 41, '2014-11-19', '2015-01-07', 1, 0, 85750, 'Checkedin', '0000-00-00', 'jejukczm'),
-(25, 2, 41, '2015-01-08', '2015-01-15', 1, 0, 10500, 'Checkedout', '0000-00-00', 'zov00u22'),
-(26, 3, 41, '2015-01-08', '2015-01-09', 1, 0, 1800, 'Checkedin', '0000-00-00', 'wiy2mmfu'),
-(27, 2, 42, '2015-02-25', '2015-02-28', 1, 0, 4500, 'Checkedin', '0000-00-00', 'g3kae5j4'),
-(28, 3, 42, '2015-02-25', '2015-02-28', 1, 0, 5400, 'Checkedin', '0000-00-00', 'g3kae5j4'),
-(29, 5, 42, '2015-02-25', '2015-02-28', 1, 0, 5250, 'Checkedin', '0000-00-00', 'g3kae5j4'),
-(30, 8, 42, '2015-02-25', '2015-02-28', 1, 0, 3900, 'Checkedin', '0000-00-00', 'g3kae5j4'),
-(31, 14, 43, '2024-10-08', '2024-10-09', 1, 0, 1800, 'pending', '0000-00-00', 'h0ev7c05'),
-(32, 16, 44, '2024-10-09', '2024-10-10', 1, 0, 1500, 'pending', '0000-00-00', 'o2ddjp0q'),
-(33, 15, 23, '2024-10-10', '2024-10-11', 1, 0, 1500, 'pending', '0000-00-00', 'fbqtbya6'),
-(34, 17, 44, '2024-10-11', '2024-10-12', 1, 0, 1500, 'pending', '0000-00-00', 'qcgvqu08'),
-(35, 14, 44, '2024-10-11', '2024-10-12', 1, 0, 1800, 'pending', '0000-00-00', 'vctezttx'),
-(36, 20, 44, '2024-10-10', '2024-10-11', 1, 0, 70000, 'pending', '0000-00-00', 'wzkqtcku');
+(47, 15, 45, '2024-10-23', '2024-10-24', 1, 0, 1500, 'pending', '0000-00-00', 't6o5rroa'),
+(44, 14, 45, '2024-10-20', '2024-10-21', 1, 0, 1800, 'Checkedout', '0000-00-00', 'kdp7h6oi'),
+(45, 16, 45, '2024-10-21', '2024-10-22', 1, 0, 1500, 'pending', '0000-00-00', 'csnciksg'),
+(46, 17, 45, '2024-10-22', '2024-10-23', 1, 0, 1500, 'pending', '0000-00-00', '6o0x04mb'),
+(38, 15, 45, '2024-10-11', '2024-10-12', 1, 0, 1500, 'pending', '0000-00-00', 'zv4brqrn');
 
 -- --------------------------------------------------------
 
@@ -413,7 +410,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_type`, `google_id`, `first_name`, `last_name`, `email`, `password`, `avatar`, `created_at`) VALUES
-(1, 'customer', '106700202670479176621', 'mark loui', '`lleno', 'lleno.markloui@gmail.com', '', 'https://lh3.googleusercontent.com/a/ACg8ocJJaOcFIO4nMT6AlgAUnaZOLroYO6CC1mZ0c7StyVMy4zI79Q=s96-c', '2024-10-09 15:29:22');
+(1, 'admin', '106700202670479176621', 'mark loui', '`lleno', 'lleno.markloui@gmail.com', '', 'https://lh3.googleusercontent.com/a/ACg8ocJJaOcFIO4nMT6AlgAUnaZOLroYO6CC1mZ0c7StyVMy4zI79Q=s96-c', '2024-10-09 15:29:22'),
+(2, 'customer', '105339567338913477272', 'mark loui', 'lleno', 'markayosky@gmail.com', '', 'https://lh3.googleusercontent.com/a/ACg8ocK2HEC4T46gV1FwOE4GDEjucU-B_A1-l36e6PHMqQTYyJF5zA=s96-c', '2024-10-10 15:09:42');
 
 -- --------------------------------------------------------
 
@@ -529,13 +527,13 @@ ALTER TABLE `amenities`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `comment_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `guest_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `guest_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `ozekimessagein`
@@ -553,7 +551,7 @@ ALTER TABLE `ozekimessageout`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -583,7 +581,7 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `usersp`

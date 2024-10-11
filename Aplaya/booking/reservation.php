@@ -115,13 +115,13 @@ $stat = $_SESSION['pending'];
                         </td>
                       </tr>
                       <tr>
-                        <td colspan="4"></td>
+                        <!--<td colspan="4"></td>
                         <td colspan="5">
                           <div class="col-xs-12 col-sm-12" align="right">
                             <button type="submit" class="btn btn-primary" align="right" name="btnlogin">Payout</button>
                           </div>
 
-                        </td> -
+                        </td> -->
                       </tr>
 
                     </tfoot>
