@@ -1,19 +1,17 @@
 <?php
-// Check if a session is already active
-if (session_status() === PHP_SESSION_NONE) {
-  session_start();
-}
-
 // Include database connection
 if (!include '../userpages/db_connection.php') {
   die("Failed to include database connection.");
 }
 
+
+
+
 // Get the user ID (assuming you have it; you can set it based on session or request)
 $userId = 1; // Change this as needed
 
-// Fetch user data from the database, including profile_picture
-$query = "SELECT name, email, bio, profile_picture FROM usersp WHERE id = ?";
+// Fetch user data from the database, including first_name, last_name, email, user_type, avatar, google_id, and bio
+$query = "SELECT first_name, last_name, email, user_type, avatar, google_id, bio FROM users WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $userId);
 $stmt->execute();
@@ -21,35 +19,41 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc(); // Fetch user data as an associative array
 
 // Initialize variables to avoid undefined index warnings
-$name = isset($user['name']) ? $user['name'] : '';
+$firstName = isset($user['first_name']) ? $user['first_name'] : '';
+$lastName = isset($user['last_name']) ? $user['last_name'] : '';
 $email = isset($user['email']) ? $user['email'] : '';
-$bio = isset($user['bio']) ? $user['bio'] : '';
-$profilePicture = isset($user['profile_picture']) ? $user['profile_picture'] : 'img/user.jpg'; // Use existing profile picture
+$userType = isset($user['user_type']) ? $user['user_type'] : '';
+$avatar = isset($user['avatar']) ? $user['avatar'] : 'img/user.jpg'; // Use existing avatar or default image
+$googleId = isset($user['google_id']) ? $user['google_id'] : ''; // New google_id field
+$bio = isset($user['bio']) ? $user['bio'] : ''; // New bio field
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Get data from POST
-  $name = $_POST['name'];
+  $firstName = $_POST['first_name'];
+  $lastName = $_POST['last_name'];
   $email = $_POST['email'];
-  $bio = $_POST['bio'];
+  $userType = $_POST['user_type'];
+  $googleId = $_POST['google_id']; // Get google_id from POST data
+  $bio = $_POST['bio']; // Get bio from POST data
 
-  // Initialize a variable to hold the new profile picture path
-  $newProfilePicture = $profilePicture; // Default to existing picture
+  // Initialize a variable to hold the new avatar path
+  $newAvatar = $avatar; // Default to existing avatar
 
   // Handle file upload
-  if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
+  if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
     // File upload settings
     $uploadDir = 'img/'; // Directory to save uploaded images
-    $uploadFile = $uploadDir . basename($_FILES['profile_picture']['name']);
+    $uploadFile = $uploadDir . basename($_FILES['avatar']['name']);
     $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
     $validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
     // Check if file is an image
-    $check = getimagesize($_FILES['profile_picture']['tmp_name']);
+    $check = getimagesize($_FILES['avatar']['tmp_name']);
     if ($check !== false && in_array($imageFileType, $validExtensions)) {
       // Move the uploaded file to the desired directory
-      if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $uploadFile)) {
-        $newProfilePicture = $uploadFile; // Update the new profile picture path
+      if (move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadFile)) {
+        $newAvatar = $uploadFile; // Update the new avatar path
       } else {
         echo "Error moving uploaded file.";
       }
@@ -59,23 +63,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Prepare the SQL update statement
-  $updateQuery = "UPDATE usersp SET name = ?, email = ?, bio = ?, profile_picture = ? WHERE id = ?";
+  $updateQuery = "UPDATE users SET first_name = ?, last_name = ?, email = ?, user_type = ?, avatar = ?, google_id = ?, bio = ? WHERE id = ?";
   $stmt = $conn->prepare($updateQuery);
 
   if (!$stmt) {
     die("Prepare failed: " . $conn->error);
   }
 
-  // Bind parameters, including the (possibly updated) profile picture
-  $stmt->bind_param("ssssi", $name, $email, $bio, $newProfilePicture, $userId);
+  // Bind parameters, including the (possibly updated) avatar, google_id, and bio
+  $stmt->bind_param("sssssssi", $firstName, $lastName, $email, $userType, $newAvatar, $googleId, $bio, $userId);
 
   // Execute the statement
   if ($stmt->execute()) {
     // Set session message
-    $_SESSION['notification'] = "Your profile is updated!";
+    $_SESSION['notification'] = "Your profile has been updated!";
     // Redirect to profile.php after successful update
     header("Location: profile.php");
-    exit(); // Make sure to call exit after header redirect
+    exit(); // Ensure script stops after header redirect
   } else {
     echo "Error updating profile: " . $stmt->error;
   }
@@ -87,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Close the database connection
 $conn->close();
 ?>
+
 
 
 
@@ -174,7 +179,7 @@ $conn->close();
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
             <img class="me-lg-2" src="" alt="">
-            <span class="d-none d-lg-inline-flex"><?php echo htmlspecialchars($name); ?></span>
+            <span class="d-none d-lg-inline-flex"><?php echo $firstName; ?></span>
           </a>
           <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
             <a href="../userpages/profile.php" class="dropdown-item">My Profile</a>

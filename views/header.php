@@ -44,7 +44,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-2">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.php" class="navbar-brand mx-4 mb-3"><img src="../img/JPAMS LOGO.png" height="80px" alt="Logo" loading="lazy" />
+                <a href="admin_dashboard.php" class="navbar-brand mx-4 mb-3"><img src="../img/JPAMS LOGO.png" height="80px" alt="Logo" loading="lazy" />
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -59,19 +59,17 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="chart.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Sales</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                                 class="fa fa-laptop me-2"></i>Guest</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="../Aplaya/admin/mod_reservation/index.php" class="dropdown-item">Guest Details</a>
-                            <a href="typography.php" class="dropdown-item">Special Requests</a>
+                            <a href="../Aplaya/admin/mod_comments/index.php" class="dropdown-item">Special Requests</a>
                             <a href="../views/admin_chat.php" class="dropdown-item">Chat</a>
-                            <a href="element.php" class="dropdown-item">Customers Feedback</a>
+                            <a href="../Aplaya/admin/mod_reports/index.php" class="dropdown-item">Customers Feedback</a>
                         </div>
                     </div>
-                    <a href="chart.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Staff Access</a>
-                    <a href="form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Offers</a>
+                    <a href="../Aplaya/admin/mod_amenities/index.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Offers</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                                 class="fa fa-laptop me-2"></i>Gallery</a>
@@ -164,7 +162,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
                                 style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex">Admin</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="../userpages/profile.php" class="dropdown-item">My Profile</a>

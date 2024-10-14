@@ -43,17 +43,17 @@ if (isset($_POST['btnsubmitbooking'])) {
   }
   $confirmation = createRandomPassword();
   $_SESSION['confirmation'] = $confirmation;
-  //$count_cart = count($_SESSION['magbanua_cart']);
+  //    $count_cart = count($_SESSION['magbanua_cart']);
 
-  //for ($i = 0; $i < $count_cart; $i++) {
-  // $mydb->setQuery("SELECT * FROM room where roomNo=" . $_SESSION['magbanua_cart'][$i]['magbanuaroomid']);
-  //$rmprice = $mydb->executeQuery();
-  //while ($row = mysql_fetch_assoc($rmprice)) {
-  //   $rate = $row['price'];
+  //   for ($i=0; $i < $count_cart  ; $i++) {     
+  //   $mydb->setQuery("SELECT * FROM room where roomNo=". $_SESSION['magbanua_cart'][$i]['magbanuaroomid']);
+  //   $rmprice = $mydb->executeQuery();
+  //   while($row = mysql_fetch_assoc($rmprice)){
+  //     $rate = $row['price']; 
+  //   }  
   // }
-  ////}
-  //$payable = $rate * $days;
-  //$_SESSION['pay'] = $payable;
+  //   $payable= $rate*$days;
+  //   $_SESSION['pay']= $payable;
 
   //check guest
 
@@ -120,10 +120,11 @@ if (isset($_POST['btnsubmitbooking'])) {
 
                   <strong>FIRST NAME:</strong> <?php echo $name; ?> <br />
                   <strong>LAST NAME:</strong> <?php echo $last; ?><br />
+                  <strong>COUNTRY:</strong> <?php echo $country; ?><br />
                   <strong>CITY:</strong> <?php echo $city; ?><br />
                   <strong>ADDRESS:</strong> <?php echo $address; ?><br />
                   <strong>ZIP CODE:</strong> <?php echo $zip; ?><br />
-                  <strong>CELLPHONE:</strong> <?php echo $phone; ?><br />
+                  <strong>PHONE:</strong> <?php echo $phone; ?><br />
                   <strong>E-MAIL:</strong> <?php echo $email; ?><br />
                 </p>
 
@@ -154,43 +155,41 @@ if (isset($_POST['btnsubmitbooking'])) {
                       foreach ($cur as $result) {
                         echo '<tr>';
                         echo '<td></td>';
-                        echo '<td>' . $result->typeName . '</td>';
-                        echo '<td>' . $_SESSION['magbanua_cart'][$i]['magbanuacheckin'] . '</td>';
-                        echo '<td>' . $_SESSION['magbanua_cart'][$i]['magbanuacheckout'] . '</td>';
-                        echo '<td>' . $_SESSION['magbanua_cart'][$i]['magbanuaday'] . '</td>';
-                        echo '<td >  &#8369  ' . $result->price . '</td>';
-                        echo '<td >1</td>';
-                        echo '<td > &#8369' . $_SESSION['magbanua_cart'][$i]['magbanuaroomprice'] . '</td>';
-
-
-
+                        echo '<td>' . htmlspecialchars($result->typeName) . '</td>'; // Use htmlspecialchars for security
+                        echo '<td>' . htmlspecialchars($_SESSION['magbanua_cart'][$i]['magbanuacheckin']) . '</td>';
+                        echo '<td>' . htmlspecialchars($_SESSION['magbanua_cart'][$i]['magbanuacheckout']) . '</td>';
+                        echo '<td>' . htmlspecialchars($_SESSION['magbanua_cart'][$i]['magbanuaday']) . '</td>';
+                        echo '<td>&#8369 ' . number_format($result->price, 2) . '</td>'; // Format price with 2 decimal places
+                        echo '<td>1</td>';
+                        echo '<td>&#8369 ' . number_format($_SESSION['magbanua_cart'][$i]['magbanuaroomprice'], 2) . '</td>'; // Format room price with 2 decimal places
                         echo '</tr>';
 
-                        //   @$payable +=  $result->price   ;
-
-                        // $_SESSION['pay'] = $payable * $days ;
+                        // Uncomment if needed for total payable calculations
+                        // @$payable += $result->price; 
+                        // $_SESSION['pay'] = $payable * $days;
                       }
                     }
                     ?>
+
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colspan="6"></td>
                       <td align="right">
                         <h5><b>Order Total: </b></h5>
+                      </td>
                       <td align="left">
-                        <h5><b> <?php echo ' &#8369 ' .  $_SESSION['pay']; ?></b></h5>
-
+                        <h5><b><?php echo ' &#8369 ' . number_format($_SESSION['pay'], 2); ?></b></h5>
                       </td>
                     </tr>
-                    <tr>
-                      <!-- <td colspan="4"></td>
-                      <td colspan="5">
-                        <div class="col-xs-12 col-sm-12" align="right">
-                          <button type="submit" class="btn btn-inverse" align="right" name="btnlogin">Payout</button>
-                        </div>
 
-                      </td> -->
+                    <tr>
+                      <!--  <td colspan="4"></td><td colspan="5">
+                            <div class="col-xs-12 col-sm-12" align="right">
+                                <button type="submit" class="btn btn-inverse" align="right" name="btnlogin">Payout</button>
+                            </div>
+                   
+                     </td> -->
                     </tr>
 
                   </tfoot>

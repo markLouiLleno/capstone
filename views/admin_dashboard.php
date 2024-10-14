@@ -171,7 +171,7 @@ include("header.php");
             style="width: 40px; height: 40px;">
           <div class="w-100 ms-3">
             <div class="d-flex w-100 justify-content-between">
-              <h6 class="mb-0">Jhon Doe</h6>
+              <h6 class="mb-0">Admin</h6>
               <small>15 minutes ago</small>
             </div>
             <span>Short message goes here...</span>

@@ -2,9 +2,6 @@
  * Style twaks
  * --------------------------------------------------
  */
-body {
-  padding-top: 70px;
-}
 footer {
   padding-left: 15px;
   padding-right: 15px;
@@ -22,13 +19,11 @@ footer {
     transition: all 0.25s ease-out;
   }
 
-  .row-offcanvas-right
-  .sidebar-offcanvas {
+  .row-offcanvas-right .sidebar-offcanvas {
     right: -50%; /* 6 columns */
   }
 
-  .row-offcanvas-left
-  .sidebar-offcanvas {
+  .row-offcanvas-left .sidebar-offcanvas {
     left: -50%; /* 6 columns */
   }
 
@@ -47,11 +42,10 @@ footer {
   }
 }
 
- 
 .navbar-magbanua {
-  background-color: #0000FF;
+  background-color: #0000ff;
   /*border-color: #0000FF;*/
- border: 1px solid #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .navbar-magbanua .navbar-brand {
@@ -93,7 +87,7 @@ footer {
 }
 
 .navbar-magbanua .navbar-toggle {
-  border-color: #0000FF;
+  border-color: #0000ff;
 }
 
 .navbar-magbanua .navbar-toggle:hover,
@@ -136,7 +130,7 @@ footer {
 
 @media (max-width: 767px) {
   .navbar-magbanua .navbar-nav .open .dropdown-menu > .dropdown-header {
-    border-color: #0000FF;
+    border-color: #0000ff;
   }
   .navbar-magbanua .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;

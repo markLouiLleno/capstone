@@ -4,36 +4,7 @@
 session_start();
 
 //create a new function to check if the session variable member_id is on set
-function logged_in()
-{
-	return isset($_SESSION['ACCOUNT_ID']);
-}
-//this function if session member is not set then it will be redirected to index.php
-function confirm_logged_in()
-{
-	if (!logged_in()) { ?>
-		<script type="text/javascript">
-			window.location = "index.php";
-		</script>
 
-	<?php
-	}
-}
-function admin_logged_in()
-{
-	return isset($_SESSION['justadmin_ID']);
-}
-//this function if session member is not set then it will be redirected to index.php
-function admin_confirm_logged_in()
-{
-	if (!admin_logged_in()) { ?>
-		<script type="text/javascript">
-			window.location = "index.php";
-		</script>
-
-<?php
-	}
-}
 
 function message($msg = "", $msgtype = "")
 {
@@ -122,5 +93,3 @@ function removetocart($pid)
 	}
 	$_SESSION['magbanua_cart'] = array_values($_SESSION['magbanua_cart']);
 }
-
-?>

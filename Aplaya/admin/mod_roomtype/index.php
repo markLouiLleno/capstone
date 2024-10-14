@@ -1,9 +1,7 @@
 <?php
 require_once("../../includes/initialize.php");
 
-if (!isset($_SESSION['justadmin_ID'])) {
-	redirect(WEB_ROOT . "admin/login.php");
-}
+
 
 $thisFile = str_replace('\\', '/', __FILE__);
 $docRoot = $_SERVER['DOCUMENT_ROOT'];

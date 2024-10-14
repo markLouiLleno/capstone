@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 $userId = 1;
 
 // Fetch user data from the database
-$query = "SELECT name, email, bio, profile_picture FROM usersp WHERE id = ?";
+$query = "SELECT first_name, last_name, email, user_type, avatar FROM users WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $userId);
 $stmt->execute();
@@ -27,23 +27,25 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
 // Initialize variables to avoid undefined index warnings
-$name = $user['name'] ?? '';
+$firstName = $user['first_name'] ?? '';
+$lastName = $user['last_name'] ?? '';
 $email = $user['email'] ?? '';
-$bio = $user['bio'] ?? '';
-$profilePicture = $user['profile_picture'] ?? '';
+$userType = $user['user_type'] ?? '';
+$avatar = $user['avatar'] ?? '';
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize and assign the form inputs
-    $name = htmlspecialchars(trim($_POST['name']));
+    $firstName = htmlspecialchars(trim($_POST['first_name']));
+    $lastName = htmlspecialchars(trim($_POST['last_name']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $bio = htmlspecialchars(trim($_POST['bio']));
+    $userType = htmlspecialchars(trim($_POST['user_type']));
     $profilePictureData = null;
 
     // Handle file upload
-    if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
-        $fileTmpPath = $_FILES['profile_picture']['tmp_name'];
-        $fileSize = $_FILES['profile_picture']['size'];
+    if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['avatar']['tmp_name'];
+        $fileSize = $_FILES['avatar']['size'];
 
         // Optionally validate file size
         if ($fileSize < 5000000) { // Limit to 5MB
@@ -56,14 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Prepare and execute the SQL update statement
-    $updateQuery = "UPDATE usersp SET name = ?, email = ?, bio = ?, profile_picture = ? WHERE id = ?";
+    $updateQuery = "UPDATE users SET first_name = ?, last_name = ?, email = ?, user_type = ?, avatar = ? WHERE id = ?";
     $stmt = $conn->prepare($updateQuery);
     if (!$stmt) {
         die("Prepare failed: " . $conn->error);
     }
 
-    // Bind parameters; use NULL for profile_picture if not uploaded
-    $stmt->bind_param("ssssi", $name, $email, $bio, $profilePictureData, $userId);
+    // Bind parameters; use NULL for avatar if not uploaded
+    $stmt->bind_param("sssssi", $firstName, $lastName, $email, $userType, $profilePictureData, $userId);
 
     // Execute the statement
     if ($stmt->execute()) {
@@ -121,8 +123,13 @@ $conn->close();
         <h2 class="text-center">Edit Profile</h2>
         <form action="update_profile.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" name="name" value="<?php echo htmlspecialchars($name); ?>" required>
+                <label for="first_name">First Name:</label>
+                <input type="text" class="form-control" name="first_name" value="<?php echo htmlspecialchars($firstName); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" class="form-control" name="last_name" value="<?php echo htmlspecialchars($lastName); ?>" required>
             </div>
 
             <div class="form-group">
@@ -131,15 +138,15 @@ $conn->close();
             </div>
 
             <div class="form-group">
-                <label for="bio">Bio:</label>
-                <textarea class="form-control" name="bio"><?php echo htmlspecialchars($bio); ?></textarea>
+                <label for="user_type">User Type:</label>
+                <input type="text" class="form-control" name="user_type" value="<?php echo htmlspecialchars($userType); ?>" required>
             </div>
 
             <div class="form-group">
-                <label for="profile_picture">Profile Picture:</label>
-                <input type="file" class="form-control-file" name="profile_picture" accept="image/*">
-                <?php if (!empty($user['profile_picture'])) { ?>
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($user['profile_picture']); ?>" alt="Profile Picture" class="profile-image" width="100">
+                <label for="avatar">Profile Picture:</label>
+                <input type="file" class="form-control-file" name="avatar" accept="image/*">
+                <?php if (!empty($avatar)) { ?>
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode($avatar); ?>" alt="Profile Picture" class="profile-image" width="100">
                 <?php } else { ?>
                     <p>No profile picture uploaded yet.</p>
                 <?php } ?>

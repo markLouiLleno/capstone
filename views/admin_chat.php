@@ -22,10 +22,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin') {
   while ($user = $result->fetch_assoc()) {
     $fullname = $user['first_name'] . ' ' . $user['last_name'];
     $chatList .= '
-      <li class="chat-item" data-user-id="'. $user['id'] .'" onclick="selectUser('. $user['id'] .', \''. $fullname . '\')">
+      <li class="chat-item" data-user-id="' . $user['id'] . '" onclick="selectUser(' . $user['id'] . ', \'' . $fullname . '\')">
         <img src="./images/avatar-placeholder.png" alt="User Avatar" class="chat-avatar">
         <div class="chat-info">
-          <div class="chat-name">'. htmlspecialchars($user['first_name']) .' '. htmlspecialchars($user['last_name']) .'</div>
+          <div class="chat-name">' . htmlspecialchars($user['first_name']) . ' ' . htmlspecialchars($user['last_name']) . '</div>
         </div>
       </li>
     ';
@@ -38,18 +38,25 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JpmasAdmin</title>
+  <title>ChatApp - Stunning UI</title>
   <link rel="stylesheet" href="../global.css">
   <link rel="stylesheet" href="../css/chat.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
   <div class="container">
     <aside class="sidebar">
+      <!-- Back arrow button -->
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
       <ul class="chat-list">
+        <?php echo $chatList ?>
       </ul>
     </aside>
     <main class="chat-area">
@@ -70,9 +77,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin') {
       </div>
     </main>
   </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <script>
+    // Function to go back to the previous page
+    function goBack() {
+      window.history.back(); // Navigate back to the previous page
+    }
+
     let selectedUserId = null;
 
     const selectUser = (userId, userName) => {
@@ -91,10 +104,13 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin') {
     const fetchMessages = (userId) => {
       $.ajax({
         type: 'GET',
-        url: './handlers/admin/get-messages.php',
-        data: { customer_id: userId },
+        url: '../php/admin/get-message.php',
+        data: {
+          customer_id: userId
+        },
         dataType: 'json',
         success: (response) => {
+          console.log(response); // Log the response to see if it's valid JSON
           if (response.success) {
             displayMessages(response.messages);
           } else {
@@ -102,9 +118,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin') {
           }
         },
         error: (xhr, status, error) => {
-          console.error('AJAX error:', error);
+          console.error('AJAX error:', xhr.responseText); // Log the full error response
         }
       });
+
     }
 
     const displayMessages = (messages) => {
@@ -142,7 +159,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin') {
 
         $.ajax({
           type: 'POST',
-          url: './handlers/admin/send-message.php',
+          url: '../php/admin/send-message.php',
           data: $('#chat-input-form').serialize(),
           dataType: 'json',
           success: (response) => {
@@ -168,5 +185,93 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin') {
       });
     });
   </script>
+
+  <style>
+    .back-button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: gray;
+      margin-bottom: 15px;
+      display: block;
+      /* Ensures the button is displayed as a block element */
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: var(--background-light) !important;
+      /* Forcefully applies the background color */
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+
+    .chat-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .chat-item {
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      /* Reduced padding for closer spacing */
+      cursor: pointer;
+      background-color: #444;
+      margin-bottom: 2px;
+      /* Reduced margin between chat items */
+      border-radius: 5px;
+      color: white;
+    }
+
+    .chat-item:hover .chat-name {
+      border-bottom: 2px solid #333;
+      /* Add underline on hover */
+    }
+
+    .chat-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .chat-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      /* Dark text color */
+      padding: 0;
+      /* Remove padding */
+      cursor: pointer;
+      /* Change cursor to pointer to indicate it's clickable */
+      border-bottom: 2px solid transparent;
+      /* Set border-bottom with transparent color */
+      transition: border-bottom 0.3s;
+      /* Smooth transition for hover effect */
+    }
+
+    .chat-header .chat-name {
+      font-size: 16px;
+      /* Keep the font size */
+      font-weight: bold;
+      /* Keep the font weight */
+      color: #333;
+      /* Dark text color */
+      margin-left: 10px;
+      /* Space between avatar and name */
+      padding: 0;
+      /* Remove padding */
+      background-color: transparent;
+      /* Remove background color */
+      border: none;
+      /* Remove border */
+      cursor: default;
+      /* Default cursor */
+    }
+  </style>
 </body>
+
 </html>

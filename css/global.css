@@ -2,15 +2,15 @@
 
 /* Variables */
 :root {
-  --background-dark: #1f1f28;
-  --primary-color: #ff6b6b;
-  --secondary-color: #ffffff;
-  --input-bg: #2b2b37;
-  --input-border: #3b3b4f;
-  --button-bg: #ff6b6b;
-  --button-hover-bg: #ff4f4f;
-  --text-muted: #b3b3b3;
-  --error-color: #ff5252;
+  --background-light: #f5f5f5; /* Light background */
+  --primary-color: #ff6b6b; /* Same primary color for branding */
+  --secondary-color: #333333; /* Dark text color */
+  --input-bg: #ffffff; /* White background for inputs */
+  --input-border: #dddddd; /* Light grey border for inputs */
+  --button-bg: #ff6b6b; /* Red button background */
+  --button-hover-bg: #ff4f4f; /* Darker red for button hover */
+  --text-muted: #777777; /* Muted text color */
+  --error-color: #ff5252; /* Error color remains the same */
 }
 
 /* Scrollbar Styles */
@@ -36,7 +36,8 @@
 }
 
 body {
-  background-color: var(--background-dark);
+  background-color: var(--background-light);
+  color: var(--secondary-color); /* Dark text color for readability */
 }
 
 .logo {

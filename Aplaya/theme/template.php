@@ -15,11 +15,34 @@ if (isset($_POST['avail'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>JPAms<?php echo $title; ?></title>
+	<title>JPAMS <?php echo $title; ?></title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap" rel="stylesheet">
+
+	<!-- Icon Font Stylesheet -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="/path/to/facebox.css">
+
+
 
 	<!-- Bootstrap core CSS -->
-	<link href="<?php echo WEB_ROOT; ?>css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo WEB_ROOT; ?>css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+	<!-- Update the path to the correct location -->
+	<link href="/jpams_resort_management_system/css/style.css" rel="stylesheet">
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="/jpams_resort_management_system/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Template Stylesheet -->
+	<link href="../css/style.css" rel="stylesheet"
+
+		<link href="/jpams_resort_management_system/css/style.css" rel="stylesheet">
+	<!-- Include jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Include Facebox -->
+	<script src="/path/to/facebox.js"></script>
+	<link rel="stylesheet" href="/path/to/facebox.css">
+	<!-- Include WOW.js -->
+
 	<script type="text/javascript" language="javascript" src="<?php echo WEB_ROOT; ?>js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php echo WEB_ROOT; ?>js/jquery.dataTables.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php echo WEB_ROOT; ?>js/bootstrap.min.js"></script>
@@ -101,82 +124,76 @@ if (isset($_POST['avail'])) {
 </head>
 
 <body>
+	<!--Header-->
+	<!-- Spinner Start -->
+	<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+		<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+	<!-- Spinner End -->
 
-	<!-- Header -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.php">JPAMS</a>
+	<!-- Navbar & Hero Start -->
+	<div class="container-fluid nav-bar sticky-top px-4 py-2 py-lg-0">
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<!-- Brand Logo -->
+			<a href="<?php echo WEB_ROOT; ?>index.php" class="navbar-brand">
+				<img src="/jpams_resort_management_system/img/JPAMS LOGO.png" alt="Logo" loading="lazy" style="max-height: 80px; width: auto;">
+			</a>
+			<!-- Toggler Button -->
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+				<span class="fa fa-bars"></span>
+			</button>
+			<!-- Navbar Links -->
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mx-auto py-0">
+					<li class="nav-item">
+						<a href="<?php echo WEB_ROOT; ?>index.php" class="nav-link active">Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="../userpages/contact.php" class="nav-link">Contact</a>
+					</li>
+					<li class="nav-item">
+						<a href="../userpages/package.php" class="nav-link">Services</a>
+					</li>
+					<li class="nav-item">
+						<a href="../userpages/about.php" class="nav-link">About</a>
+					</li>
+				</ul>
+				<!-- Social Icons -->
+				<div class="team-icon d-none d-xl-flex justify-content-center me-3">
+					<a class="btn btn-square btn-light rounded-circle mx-1" href="https://www.facebook.com/profile.php?id=100081561532377" target="_blank" rel="noopener noreferrer">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<!-- Add more social icons if needed -->
+				</div>
+				<!-- User Dropdown -->
+				<div class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+						<img class="me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+						<span class="d-none d-lg-inline-flex"></span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+						<a href="../userpages/profile.php" class="dropdown-item">My Profile</a>
+						<a href="../views/logout.php" class="dropdown-item">Log Out</a>
+					</div>
+				</div>
 			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="<?php echo WEB_ROOT; ?>../views/customer_dashboard.php">Home</a></li>
-					<li><a href="<?php echo WEB_ROOT; ?>index.php?page=5">Room and Rates</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<?php $cart = isset($_SESSION['magbanua_cart']) ? count($_SESSION['magbanua_cart']) : 0; ?>
-					<li><a href="<?php echo WEB_ROOT; ?>booking/"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (<?php echo $cart; ?>)</a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-
-	<!-- Header CSS -->
-	<style>
-		.navbar-inverse .navbar-brand,
-		.navbar-inverse .navbar-nav>li>a {
-			color: #FFF;
-			padding-top: 15px;
-			padding-bottom: 15px;
-		}
-
-
-
-		/* Ensure proper vertical alignment */
-		.navbar-nav>li>a {
-			display: flex;
-			align-items: center;
-		}
-
-		.navbar-brand {
-			display: flex;
-			align-items: center;
-		}
-
-		.navbar-toggle {
-			margin-top: 50px;
-			/* Adjust toggle button alignment */
-		}
-	</style>
-
+		</nav>
+	</div>
+	<!-- Navbar & Hero End -->
 
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<!-- <div class="well"> -->
-				<div style="float:left; width:370px; margin-left:15px;">
-					<div style="float:left; width:70px; margin-bottom:10px;">
-						<img src="<?php echo WEB_ROOT; ?>images/IMG_9392.jpg" width="1110px" height="300px" style="-webkit-border-radius:5px; -moz-border-radius:5px;" alt="Image">
+				<div class="container-fluid bg-breadcrumb">
+					<div class="container text-center py-5" style="max-width: 900px;">
+						<ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+						</ol>
 					</div>
 				</div>
-
-				<!-- <img src="<?php echo WEB_ROOT; ?>img/dakak-beach-resort.jpg"   width="1100px" hieght="50px"  /> -->
-				<!-- <div class="media">
-					  <a class="pull-left" href="#">
-					    <img  class="media-object" style="height:300px;width:1100" src="<?php echo WEB_ROOT; ?>img/dakak-beach-resort.jpg" alt="...">
-					  </a>
-					</div> -->
-				<!-- </div> -->
 			</div>
 		</div>
 	</div>
@@ -416,6 +433,16 @@ if (isset($_POST['avail'])) {
 					}
 				}
 			</SCRIPT>
+			<script type="text/javascript" language="javascript" src="<?php echo WEB_ROOT; ?>../js/main.js"></script>
+
+			<script src="../js/main.js"></script>
+			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+			<script>
+				new WOW().init();
+			</script>
+
 		</footer>
 	</div>
 	<!--/.container-->

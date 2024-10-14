@@ -154,21 +154,21 @@ if (isset($_POST['submit'])) {
 								<input type="checkbox" id="condition" name="condition" value="checkbox" />
 								<small>
 									I Agree with the
-									<a href="#" data-toggle="modal" data-target="#termsModal"><b>TERMS AND CONDITION</b></a>
+									<a href="#" data-toggle="modal" data-target="#termsModal"><b>TERMS AND CONDITIONS</b></a>
 									of this Resort
 								</small>
 								<br />
-								<img src="captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg'>
+								<img src="captcha_code_file.php?rand=<?php echo rand(); ?>" id='captchaimg' alt="Captcha Image">
 								<a href='javascript: refreshCaptcha();'>
-									<img src="<?php echo WEB_ROOT; ?>images/refresh.png" alt="refresh" border="0" style="margin-top:5px; margin-left:5px;" />
+									<img src="<?php echo WEB_ROOT; ?>images/refresh.png" alt="Refresh Captcha" border="0" style="margin-top:5px; margin-left:5px;" />
 								</a>
 								<br />
-								<small>If you are a Human Enter the code above here :</small>
+								<small>If you are a Human, enter the code above here:</small>
 								<input id="6_letters_code" name="6_letters_code" type="text" class="form-control input-sm" width="20">
 							</p>
 							<br />
 							<div class="col-md-4">
-								<input name="submit" type="submit" value="Confirm" class="btn btn-inverse" id="confirmButton" onclick="return personalInfo();" />
+								<input name="submit" type="submit" value="Confirm" class="btn btn-inverse" id="confirmButton" disabled />
 							</div>
 						</div>
 					</div>
@@ -215,10 +215,10 @@ if (isset($_POST['submit'])) {
 									<h4>Liability Disclaimer:</h4>
 									<ul>
 										<li>JPAMS Private Resort is not liable for any loss, damage, injury, or inconvenience arising from your use of our facilities or services.</li>
-										<li>By making a booking you are confirming that you are authorised to do so on behalf of all persons named in the booking and you are acknowledging that all members of your party agree to be bound by these Booking Terms & Conditions.</li>
+										<li>By making a booking, you are confirming that you are authorized to do so on behalf of all persons named in the booking and you acknowledge that all members of your party agree to be bound by these Booking Terms & Conditions.</li>
 										<li>When your booking has been made, a confirmation can be sent to you by email using the email address that you have supplied, or by post. Booking confirmations are subject to the availability of accommodation at the hotel.</li>
 										<li>You should carefully check the details of your confirmation as soon as you receive it. You must contact Aplaya’s beach resort immediately if any of the details are incorrect or incomplete.</li>
-										<li>We will always endeavour to rectify any inaccuracies or accommodate any alterations you wish to make to your booking. We cannot accept liability for any inaccuracies that are not brought to our attention within seven days of issuing your confirmation, nor can we accept responsibility for inaccurate information that you have supplied.</li>
+										<li>We will always endeavor to rectify any inaccuracies or accommodate any alterations you wish to make to your booking. We cannot accept liability for any inaccuracies that are not brought to our attention within seven days of issuing your confirmation, nor can we accept responsibility for inaccurate information that you have supplied.</li>
 									</ul>
 
 									<h4>JPAMS Private Resort Rules and Policies:</h4>
@@ -267,12 +267,6 @@ if (isset($_POST['submit'])) {
 						}
 					</script>
 
-					<!-- Bootstrap and jQuery JS -->
-					<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-					<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-					<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
 					<!--  </div>-->
 		</div>
 		<style>
@@ -320,4 +314,3 @@ if (isset($_POST['submit'])) {
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<!--/row-->
-	<?php require_once 'terms_condition.php'; ?>

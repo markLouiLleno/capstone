@@ -1,24 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --background-dark: #1f1f28;
-  --primary-color: #ff6b6b;
-  --secondary-color: #ffffff;
-  --input-bg: #2b2b37;
-  --input-border: #3b3b4f;
-  --button-bg: #ff6b6b;
-  --button-hover-bg: #ff4f4f;
-  --text-muted: #b3b3b3;
-  --error-color: #ff5252;
-  --chat-bg: #2a2a36;
-  --message-incoming: #3a3a4a;
-  --message-outgoing: #ff6b6b;
-  --sidebar-hover: #33333f;
-  --scrollbar-thumb: #4a4a5a;
+  --background-light: #f5f5f5; /* Light background */
+  --primary-color: #0084ff; /* Messenger sky-blue */
+  --secondary-color: #333333; /* Dark text */
+  --input-bg: #ffffff; /* White input background */
+  --input-border: #dddddd; /* Light grey border */
+  --button-bg: #0084ff; /* Sky-blue button */
+  --button-hover-bg: #0072e5; /* Slightly darker blue for hover */
+  --text-muted: #777777; /* Muted grey text */
+  --error-color: #ff5252; /* Red error color */
+  --chat-bg: #ffffff; /* White chat area background */
+  --message-incoming: #e9f4ff; /* Light blue for incoming messages */
+  --message-outgoing: #0084ff; /* Sky-blue for outgoing messages */
+  --sidebar-hover: #f0f0f0; /* Light grey for sidebar hover */
+  --scrollbar-thumb: #cccccc; /* Light grey scrollbar */
 }
 
 body {
-  background-color: var(--background-dark);
+  background-color: var(--background-light);
   color: var(--secondary-color);
   height: 100vh;
   display: flex;
@@ -29,13 +29,16 @@ body {
   display: flex;
   flex: 1;
   overflow: hidden;
-  background-color: var(--background-dark);
+  background-color: var(--background-light);
 }
 
 .sidebar {
-  width: 350px;
-  padding: 1rem;
-  overflow-y: auto;
+  width: 250px;
+  background-color: var(
+    --background-light
+  ) !important; /* Forcefully applies the background color */
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .chat-list {
@@ -50,10 +53,14 @@ body {
   border-radius: 8px;
   transition: all 0.3s ease;
   margin-bottom: 0.5rem;
+  background-color: var(
+    --background-light
+  ) !important; /* Ensure light background */
+  color: var(--secondary-color); /* Ensure text is dark */
 }
 
 .chat-item:hover {
-  background-color: var(--input-bg);
+  background-color: var(--sidebar-hover);
 }
 
 .chat-avatar {
@@ -72,6 +79,7 @@ body {
   font-weight: 500;
   margin-bottom: 0.25rem;
   font-family: "Poppins", sans-serif;
+  color: var(--secondary-color); /* Set chat name color to dark */
 }
 
 .chat-preview {
@@ -90,8 +98,8 @@ body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  background-color: var(--background-dark);
-  border: 1px solid var(--input-bg);
+  background-color: var(--chat-bg);
+  border: 1px solid var(--input-border);
   position: relative;
   border-radius: 24px 24px 0px 0px;
 }
@@ -100,7 +108,7 @@ body {
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--input-bg);
+  border-bottom: 1px solid var(--input-border);
   border-radius: 24px 24px 0px 0px;
   background-color: var(--input-bg);
 }
@@ -132,7 +140,7 @@ body {
 }
 
 .incoming {
-  background-color: var(--input-bg);
+  background-color: var(--message-incoming);
   align-self: flex-start;
   border-bottom-left-radius: 0;
 }
@@ -151,8 +159,6 @@ body {
 }
 
 .chat-input-container {
-  /* background-color: var(--input-bg);
-  border: 1px solid var(--input-bg); */
   padding: 1rem 1.5rem;
 }
 
@@ -165,12 +171,12 @@ body {
   flex-grow: 1;
   padding: 1.2rem 1.5rem;
   border: none;
-  background-color: transparent;
+  background-color: var(--input-bg);
   color: var(--secondary-color);
   font-size: 1rem;
   outline: none;
-  background-color: var(--input-bg);
   border-radius: 40px 0px 0px 40px;
+  border: 1px solid var(--input-border);
 }
 
 .chat-input input::placeholder {
@@ -179,8 +185,8 @@ body {
 
 .chat-input button {
   padding: 1rem 1.5rem;
-  background-color: var(--input-bg);
-  color: var(--text-muted);
+  background-color: var(--button-bg);
+  color: var(--secondary-color);
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
