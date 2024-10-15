@@ -1,5 +1,7 @@
 <?php
 require_once './vendor/autoload.php';
+require_once './handlers/session.php';
+
 
 session_start();
 
@@ -9,6 +11,7 @@ $client->setClientSecret('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');
 $client->setRedirectUri('http://localhost/jpams_resort_management_system/google-callback.php');
 $client->addScope("email");
 $client->addScope("profile");
+
 
 $auth_url = $client->createAuthUrl();
 ?>
